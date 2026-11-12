@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="./" />
+    <title>Brown Davis Architecture &amp; Interiors — Architecture Studios Showcase (Miami, Florida)</title>
+    <meta name="description" content="Official digital portfolio and interactive residence browser for Brown Davis Architecture &amp; Interiors in 901 Pennsylvania Ave, Miami Beach, FL 33139, USA (Miami, Florida)." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Header with Primary Brand Emblem -->
+    <header class="site-header">
+      <a href="./" class="brand-emblem">Brown Davis Architecture &amp; Interiors</a>
+      <nav class="nav-links" aria-label="Client Navigation">
+        <a href="./#overview">Overview</a>
+        <a href="./#unit-browser">Interactive Units</a>
+        <a href="./#project-gallery">Google Maps Portfolio</a>
+        <a href="./#location-contact">Contact & Location</a>
+      </nav>
+      <a href="tel:+1 305-401-7565" class="cta-btn">Book a Call · +1 305-401-7565</a>
+    </header>
+
+    <!-- Hero Showcase -->
+    <section id="overview" class="hero-section">
+      <div>
+        <div class="kicker">Architecture Studios · Services · Miami, Florida</div>
+        <h1 class="hero-title">Brown Davis Architecture &amp; Interiors</h1>
+        <p class="hero-subtitle">
+          Located at 901 Pennsylvania Ave, Miami Beach, FL 33139, USA (Miami, Florida). Needs a refined Miami Beach architectural &amp; interiors monograph featuring coastal resilience case studies, 3D elevation previews, and private consultation booking.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:+1 305-401-7565" class="cta-btn">Book a Call (+1 305-401-7565)</a>
+          <a href="https://wa.me/13054017565" target="_blank" rel="noopener noreferrer" class="cta-btn-outline">
+            WhatsApp Concierge
+          </a>
+          <a href="https://maps.google.com/?cid=8948737008913000661&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" class="cta-btn-outline">
+            Verified Google Maps Profile
+          </a>
+        </div>
+        <div class="metrics-bar">
+          <div>
+            <div class="metric-value">5.0 ★</div>
+            <div class="metric-label">Google Maps Rating</div>
+          </div>
+          <div>
+            <div class="metric-value">9</div>
+            <div class="metric-label">Verified Client Reviews</div>
+          </div>
+          <div>
+            <div class="metric-value">3</div>
+            <div class="metric-label">Signature Typologies</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media-card">
+        <img
+          src="https://lh3.googleusercontent.com/grass-cs/AABkmLdYzORJYlcIO_2JM6hz57fa-8b2OzhpRe4LRrTMoNY-8l_vm6oSnuQKnDGGx78Ki7rv140Hhx4qalFpLzNYsjnvQLRFnmKY9jGMiADjc94-D-onJ4EMOuHVMNLDV_Tjhm710Awd1w=s4800-w800-h800"
+          alt="Brown Davis Architecture &amp; Interiors Featured Project"
+          referrerpolicy="no-referrer"
+          onerror="this.style.display='none'"
+        />
+        <div class="media-caption">
+          <span>Featured Portfolio Asset — Brown Davis Architecture &amp; Interiors</span>
+          <span>Miami, Florida</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Unit & Typology Browser -->
+    <section id="unit-browser" class="section-container">
+      <div class="section-header">
+        <div>
+          <div class="kicker">Interactive Unit & Commission Browser</div>
+          <h2 class="section-title">Tailored Architecture Studios Typologies</h2>
+        </div>
+        <a href="tel:+1 305-401-7565" class="cta-btn-outline">Request Full Floorplans & BOQ</a>
+      </div>
+
+      <div class="unit-browser">
+        <div class="unit-tabs" role="tablist">
+          
+          <button
+            type="button"
+            class="unit-tab-btn active"
+            data-unit-id="unit-a"
+          >
+            <div style="font-size:0.72rem;color:var(--accent-gold);font-family:'JetBrains Mono',monospace;">ARCH-01 · 650 m²</div>
+            <div style="font-size:0.95rem;font-weight:700;margin-top:0.2rem;">Monolith Coastal Villa Concept</div>
+            <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.15rem;">Bespoke Architectural Commission</div>
+          </button>
+          <button
+            type="button"
+            class="unit-tab-btn "
+            data-unit-id="unit-b"
+          >
+            <div style="font-size:0.72rem;color:var(--accent-gold);font-family:'JetBrains Mono',monospace;">ARCH-02 · 490 m²</div>
+            <div style="font-size:0.95rem;font-weight:700;margin-top:0.2rem;">Courtyard Atrium Residence</div>
+            <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.15rem;">Sustainable Luxury Typology</div>
+          </button>
+          <button
+            type="button"
+            class="unit-tab-btn "
+            data-unit-id="unit-c"
+          >
+            <div style="font-size:0.72rem;color:var(--accent-gold);font-family:'JetBrains Mono',monospace;">ARCH-03 · 1,200 m²</div>
+            <div style="font-size:0.95rem;font-weight:700;margin-top:0.2rem;">Boutique Commercial &amp; Hospitality Pavilion</div>
+            <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.15rem;">Mixed-Use Flagship Design</div>
+          </button>
+        </div>
+
+        <div class="unit-detail-panel">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;">
+              <span id="active-unit-code" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent-gold);">ARCH-01</span>
+              <span id="active-unit-status" style="font-size:0.75rem;color:#34d399;font-weight:600;">Concept &amp; Schematic Ready</span>
+            </div>
+            <h3 id="active-unit-title" style="font-size:1.5rem;font-weight:700;margin-top:0.35rem;">Monolith Coastal Villa Concept</h3>
+            <p id="active-unit-type" style="font-size:0.85rem;color:var(--text-muted);margin-top:0.2rem;">Bespoke Architectural Commission</p>
+          </div>
+
+          <div class="unit-specs-grid">
+            <div>
+              <div class="metric-label">Total Built Area</div>
+              <div id="active-unit-area" class="metric-value" style="font-size:1.15rem;margin-top:0.2rem;">650 m²</div>
+            </div>
+            <div>
+              <div class="metric-label">Spatial Configuration</div>
+              <div id="active-unit-config" style="font-size:0.88rem;font-weight:600;margin-top:0.2rem;">3 Levels · Cantilevered Concrete &amp; Glass · BIM Ready</div>
+            </div>
+            <div>
+              <div class="metric-label">Orientation & Exposure</div>
+              <div id="active-unit-exposure" style="font-size:0.88rem;font-weight:600;margin-top:0.2rem;">Miami Coastal Topography</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="metric-label">Architectural & Design Specification</div>
+            <p id="active-unit-highlight" style="font-size:0.92rem;color:var(--text-ivory);margin-top:0.35rem;">
+              Passive solar orientation, double-height atrium gallery, and seamless subterranean garage.
+            </p>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:0.85rem;">
+            <a href="tel:+1 305-401-7565" class="cta-btn">Schedule Private Viewing · +1 305-401-7565</a>
+            <a href="https://wa.me/13054017565" target="_blank" rel="noopener noreferrer" class="cta-btn-outline">Inquire on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real Google Maps Project Photo Gallery -->
+    <section id="project-gallery" class="section-container">
+      <div class="section-header">
+        <div>
+          <div class="kicker">Verified Real-World Portfolio</div>
+          <h2 class="section-title">Brown Davis Architecture &amp; Interiors — Google Maps Project Gallery</h2>
+        </div>
+        <a href="https://maps.google.com/?cid=8948737008913000661&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener noreferrer" class="cta-btn-outline">
+          Inspect Original Google Maps Listing
+        </a>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img
+            src="https://lh3.googleusercontent.com/grass-cs/AABkmLdYzORJYlcIO_2JM6hz57fa-8b2OzhpRe4LRrTMoNY-8l_vm6oSnuQKnDGGx78Ki7rv140Hhx4qalFpLzNYsjnvQLRFnmKY9jGMiADjc94-D-onJ4EMOuHVMNLDV_Tjhm710Awd1w=s4800-w800-h800"
+            alt="Brown Davis Architecture &amp; Interiors Portfolio Image 1"
+            referrerpolicy="no-referrer"
+            onerror="this.style.display='none'"
+          />
+          <div class="media-caption">
+            <span>Primary Google Maps Showcase Asset</span>
+            <a href="https://lh3.googleusercontent.com/grass-cs/AABkmLdYzORJYlcIO_2JM6hz57fa-8b2OzhpRe4LRrTMoNY-8l_vm6oSnuQKnDGGx78Ki7rv140Hhx4qalFpLzNYsjnvQLRFnmKY9jGMiADjc94-D-onJ4EMOuHVMNLDV_Tjhm710Awd1w=s4800-w800-h800" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">Open High-Res</a>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <img
+            src="https://lh3.googleusercontent.com/grass-cs/AABkmLegGtu_RUL5_NcWol1sRFuGd2BcWjbIFYzzQq2yqX8AgkYsBN-I5y9_ZmfTZUb25pgw8AN2cBeLOhrDcr3_lf2IlgkZrsVF6Ac13be8coSqD-FJaxjSOSMhZADziaqZED2U5pMvxg=s4800-w800-h800"
+            alt="Brown Davis Architecture &amp; Interiors Portfolio Image 2"
+            referrerpolicy="no-referrer"
+            onerror="this.style.display='none'"
+          />
+          <div class="media-caption">
+            <span>Secondary Architectural & Spatial View</span>
+            <a href="https://lh3.googleusercontent.com/grass-cs/AABkmLegGtu_RUL5_NcWol1sRFuGd2BcWjbIFYzzQq2yqX8AgkYsBN-I5y9_ZmfTZUb25pgw8AN2cBeLOhrDcr3_lf2IlgkZrsVF6Ac13be8coSqD-FJaxjSOSMhZADziaqZED2U5pMvxg=s4800-w800-h800" target="_blank" rel="noopener noreferrer" style="color:var(--accent-gold);">Open High-Res</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="location-contact" class="section-container">
+      <div class="section-header">
+        <div>
+          <div class="kicker">Direct Consultation & Headquarters</div>
+          <h2 class="section-title">Connect with Brown Davis Architecture &amp; Interiors</h2>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+        <div style="padding:1.5rem;border-radius:8px;border:1px solid var(--border-subtle);background:var(--bg-surface);">
+          <div class="metric-label">Verified Office & Project Address</div>
+          <div style="font-size:0.95rem;font-weight:600;margin-top:0.4rem;">901 Pennsylvania Ave, Miami Beach, FL 33139, USA (Miami, Florida)</div>
+        </div>
+        <div style="padding:1.5rem;border-radius:8px;border:1px solid var(--border-subtle);background:var(--bg-surface);">
+          <div class="metric-label">Direct Telephone & WhatsApp</div>
+          <div style="font-size:1.05rem;font-weight:700;font-family:'JetBrains Mono',monospace;margin-top:0.4rem;">
+            <a href="tel:+1 305-401-7565" style="color:var(--accent-gold);">+1 305-401-7565</a>
+          </div>
+        </div>
+        <div style="padding:1.5rem;border-radius:8px;border:1px solid var(--border-subtle);background:var(--bg-surface);">
+          <div class="metric-label">Hosted Multi-Client Deployment URL</div>
+          <div style="font-size:0.82rem;font-family:'JetBrains Mono',monospace;margin-top:0.4rem;word-break:break-all;">
+            https://proptech-luxury-showcases.vercel.app/client-11-brown-davis-architecture-interiors/
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>© 2026 Brown Davis Architecture &amp; Interiors · 901 Pennsylvania Ave, Miami Beach, FL 33139, USA (Miami, Florida)</div>
+      <div>Direct Call: <a href="tel:+1 305-401-7565" style="color:var(--accent-gold);">+1 305-401-7565</a></div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
