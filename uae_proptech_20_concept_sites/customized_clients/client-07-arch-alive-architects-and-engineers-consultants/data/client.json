@@ -1,0 +1,34 @@
+{
+  "company_name": "Arch Alive Architects And Engineers Consultants",
+  "niche": "Architecture Studio",
+  "emirate": "Dubai",
+  "address": "Office 204, Amman Street, Al Qusais, Dubai, Dubai, United Arab Emirates",
+  "phone_directory_listed": "+971 4 220 0664",
+  "phone_verified": false,
+  "google_maps": "https://www.google.com/maps/search/?api=1&query=Arch%20Alive%20Architects%20And%20Engineers%20Consultants%20Dubai%20UAE",
+  "google_photos_verified": false,
+  "website_absence_verified": false,
+  "email_verified": false,
+  "concept_projects": [
+    {
+      "title": "Signature Villa Concept",
+      "kind": "residential",
+      "status": "Concept illustration only — not actual projects",
+      "illustrative_image": "./assets/concept.svg"
+    },
+    {
+      "title": "Urban Residence Concept",
+      "kind": "commercial",
+      "status": "Concept illustration only — not actual projects",
+      "illustrative_image": "./assets/concept-1.svg"
+    },
+    {
+      "title": "Private Retreat Concept",
+      "kind": "hospitality",
+      "status": "Concept illustration only — not actual projects",
+      "illustrative_image": "./assets/concept-2.svg"
+    }
+  ],
+  "outreach_status": "DRAFT ONLY - NOT SENT",
+  "images_status": "Original illustrative SVG mockups; not client assets"
+}

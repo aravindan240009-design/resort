@@ -1,0 +1,34 @@
+{
+  "company_name": "Taiga Interiors LLC",
+  "niche": "Interior Design",
+  "emirate": "Abu Dhabi",
+  "address": "Sultan Bin Zayed the First Street, Abu Dhabi City, Abu Dhabi, United Arab Emirates",
+  "phone_directory_listed": "+971 2 550 3003",
+  "phone_verified": false,
+  "google_maps": "https://www.google.com/maps/search/?api=1&query=Taiga%20Interiors%20LLC%20Abu%20Dhabi%20UAE",
+  "google_photos_verified": false,
+  "website_absence_verified": false,
+  "email_verified": false,
+  "concept_projects": [
+    {
+      "title": "Serene Living Concept",
+      "kind": "residential",
+      "status": "Concept illustration only — not actual projects",
+      "illustrative_image": "./assets/concept.svg"
+    },
+    {
+      "title": "Contemporary Suite Concept",
+      "kind": "commercial",
+      "status": "Concept illustration only — not actual projects",
+      "illustrative_image": "./assets/concept-1.svg"
+    },
+    {
+      "title": "Signature Interior Concept",
+      "kind": "hospitality",
+      "status": "Concept illustration only — not actual projects",
+      "illustrative_image": "./assets/concept-2.svg"
+    }
+  ],
+  "outreach_status": "DRAFT ONLY - NOT SENT",
+  "images_status": "Original illustrative SVG mockups; not client assets"
+}
