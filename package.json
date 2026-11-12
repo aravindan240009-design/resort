@@ -1,0 +1,18 @@
+{
+  "name": "era-residence-clone",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite preview",
+    "test:styles": "node scripts/assert-styles.mjs",
+    "test": "npm run test:styles",
+    "all": "npm run test:styles && npm run build"
+  },
+  "devDependencies": {
+    "playwright": "^1.58.2",
+    "vite": "^6.4.6"
+  }
+}

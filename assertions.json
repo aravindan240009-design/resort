@@ -1,0 +1,53 @@
+{
+  "tokens": {
+    "colors": {
+      "base1000": "#17233b",
+      "base0": "#f3f3ec",
+      "velvetPlum": "#340c24",
+      "powderSky": "#b5cedb"
+    },
+    "fonts": {
+      "display": "ambroise-francois-std",
+      "accent": "sloop-script-three",
+      "body": "Maison Neue Extended"
+    },
+    "timings": {
+      "durS": "0.4s",
+      "durM": "0.8s",
+      "durL": "1.2s"
+    }
+  },
+  "computedStyleAssertions": [
+    {
+      "selector": "body",
+      "properties": {
+        "color": "rgb(23, 35, 59)",
+        "font-family": "Maison Neue Extended"
+      }
+    },
+    {
+      "selector": "h1",
+      "properties": {
+        "font-family": "ambroise-francois-std"
+      }
+    },
+    {
+      "selector": "h2",
+      "properties": {
+        "font-family": "sloop-script-three"
+      }
+    },
+    {
+      "selector": "[hover-btn]",
+      "properties": {
+        "cursor": "pointer"
+      }
+    },
+    {
+      "selector": ".header-nav",
+      "properties": {
+        "position": "fixed"
+      }
+    }
+  ]
+}
