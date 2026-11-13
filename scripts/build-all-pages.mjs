@@ -318,6 +318,7 @@ video {
     max-width: 86% !important;
     margin: 0 auto 24px !important;
     color: #17233B !important;
+    text-align: center !important;
   }
   .loc-info-s .s_logo {
     display: flex !important;
@@ -446,6 +447,92 @@ video {
     max-width: 100% !important;
     height: auto !important;
     display: block !important;
+  }
+
+  /* Amenities Section Mobile Layout (Matching Reference) */
+  .amm-s_cms_tabs-w {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .amm-s_cms_tabs {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .amen-tabs-cms {
+    width: 100% !important;
+  }
+  .amen-tabs-cms_list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .amen-tabs-cms_list_item {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .amen-tab {
+    width: 100% !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    padding: 4px 0 !important;
+  }
+  .amen-tab .h5 {
+    font-family: 'ambroise-francois-std', serif !important;
+    font-size: clamp(22px, 6vw, 30px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    color: #fff !important;
+    opacity: 0.55 !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+  }
+  .amen-tab.is-active .h5,
+  .amen-tab:hover .h5 {
+    opacity: 1 !important;
+    transform: scale(1.02) !important;
+  }
+  .amm-s_cms_tabs_line {
+    display: none !important;
+  }
+
+  /* High-resolution rendering & optimal positioning for all mobile images */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+  .hero-w_bg_master_img_day img,
+  .hero-w_bg_master_img_night img {
+    object-fit: cover !important;
+    object-position: center 38% !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .amen-slide_img,
+  .amen-slide_img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  .benefit-slide_img,
+  .benefit-slide_img img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 
   /* Guarantee all text typography stays crisp and high z-index */
@@ -705,6 +792,7 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
 const corePages = [
   { src: 'extracted/pages/index.html', dest: 'index.html', type: 'home' },
   { src: 'extracted/pages/apartments.html', dest: 'apartments.html', type: 'apartments' },
+  { src: 'extracted/pages/apartments.html', dest: 'apartments/index.html', type: 'apartments' },
   { src: 'extracted/pages/contact.html', dest: 'contact.html', type: 'contact' },
   { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon.html', type: 'coming-soon' }
 ];
