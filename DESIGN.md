@@ -1,6 +1,7 @@
-# Design Tokens & System Specifications — ERA Residence
+# Design Tokens & System Specifications — AURA Residence
 
 Extracted from live target: `https://www.era-residence.com/`
+Transformed into luxury template: **AURA Residence** by **Ashok Studio**
 
 ## 1. Typography
 
@@ -58,38 +59,30 @@ Root sizing uses fluid typography with `html { font-size: 1vw; }`:
   - `u-32`: `2rem`
   - `u-48`: `3rem`
   - `u-64`: `4rem`
-  - `u-96`: `6rem`
-  - `u-160`: `10rem`
-  - `u-272`: `17rem`
 
 ---
 
-## 4. Animation & Motion Design
+## 4. Motion & Animation Tokens
 
-### Durations
-- `--dur-s`: `0.4s` (Quick micro-interactions, badge reveals)
-- `--dur-m`: `0.8s` (Button hover transitions, modal reveals)
-- `--dur-l`: `1.2s` (Hero entrance, character reveals, section transitions)
-- `stagger`: `0.1s` (Character and list stagger intervals)
-
-### Timing Functions / Easing Curves
-- `--ease-in-out`: `cubic-bezier(0.76, 0, 0.24, 1)`
-- `--ease-out`: `cubic-bezier(0.25, 1, 0.5, 1)`
-- `--ease-in`: `cubic-bezier(0.5, 0, 0.75, 0)`
-- `--ease`: `cubic-bezier(0.25, 0.1, 0.25, 1)`
-- `--ease-write`: `cubic-bezier(0.333, 0, 0.667, 1)`
-- `diveIn`: `cubic-bezier(0.6, 0, 0, 1)`
-- `horScroll`: `cubic-bezier(0.25, 0, 0.75, 1)`
-- `loaderEase`: Custom bezier `M0,0,C0,0,0.13,0.34,0.238,0.442,0.305,0.506,0.322,0.514,0.396,0.54,0.478,0.568,0.468,0.56,0.522,0.584,0.572,0.606,0.61,0.719,0.714,0.826,0.798,0.912,1,1,1,1`
+- **Durations**:
+  - `--dur-s`: `0.3s` (standard micro-interactions, button hover)
+  - `--dur-m`: `0.6s` (drawer slide, theme transitions)
+  - `--dur-l`: `1.2s` (hero entrance, clip-path arch reveals)
+- **Easing Curves**:
+  - `--ease-out`: `cubic-bezier(0.16, 1, 0.3, 1)`
+  - `--ease-in-out`: `cubic-bezier(0.76, 0, 0.24, 1)`
+- **Scroll Physics**: Lenis smooth scroll (`smoothWheel: true`, `duration: 1.2`, `lerp: 0.1`).
 
 ---
 
-## 5. Key Interactive Mechanics
+## 5. Residence Detail Architecture (.lot- System)
 
-1. **Preloader Arch & Reveal**: Progressive arch scaling and expansion revealing the hero section with smooth camera zoom.
-2. **Day / Night Switching**: Seamlessly toggles daylight architectural visuals and nighttime ambient lighting.
-3. **Smooth Scroll Engine**: Lenis running at 60/120fps with inertial damping.
-4. **Horizontal Walkway Section**: Min-width 992px horizontal scroll pinned track displaying the residential pathway and bougainvillea parallax layers.
-5. **Architectural Clip-Path Transitions**: Geometric polygon clip-path morphs coordinated with scroll position.
-6. **Apartment Browser**: Live filterable 25-residence catalog (Typology, Bedrooms, Area Sorting) with detail drawers and floorplans.
-7. **Modals & Drawers**: Fullscreen responsive navigation menu and "Book a call" / "Contact" drawer forms.
+- **Sticky Specs Rail (`.lot-s_info`)**: Sticks to the top of viewport (`position: sticky`, `height: 100vh`) on desktop viewports (`min-width: 992px`) displaying:
+  - Unit Heading (`.lot-s_info_header_num`, e.g. `No. 011`)
+  - Key metrics: Bedrooms, Interior Area, Terrace, Garden
+  - Orienting compass with SVG angle indicator (`rotate: -165deg`)
+  - Building block locator map (`.block-diagram`)
+  - Request submission CTA trigger
+- **Architectural Media Canvas (`.lot-s_media`)**:
+  - **Desktop (`.b-desk`)**: High-res vector floor plans showing ground floor and basement layouts with room dimensions.
+  - **Mobile (`.b-mob`)**: Dynamically scaled floor plans positioned inline with touch-friendly spacing and responsive height constraints.

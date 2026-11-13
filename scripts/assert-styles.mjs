@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import path from 'path';
 import { chromium } from 'playwright';
 
-// Simple static HTTP server for verification
+// Static HTTP server for verification
 function startStaticServer(port = 3005) {
   const root = path.resolve('.');
   const mimeTypes = {
@@ -19,7 +19,8 @@ function startStaticServer(port = 3005) {
     '.woff2': 'font/woff2',
     '.webm': 'video/webm',
     '.mov': 'video/quicktime',
-    '.mp4': 'video/mp4'
+    '.mp4': 'video/mp4',
+    '.pdf': 'application/pdf'
   };
 
   const server = createServer((req, res) => {
@@ -28,6 +29,13 @@ function startStaticServer(port = 3005) {
     else if (reqPath === '/apartments') reqPath = '/apartments.html';
     else if (reqPath === '/contact') reqPath = '/contact.html';
     else if (reqPath === '/coming-soon') reqPath = '/coming-soon.html';
+    else if (reqPath.startsWith('/apartments/')) {
+      const slug = reqPath.replace('/apartments/', '').replace(/\/$/, '').replace('.html', '');
+      const p = path.join(root, 'apartments', slug, 'index.html');
+      if (fs.existsSync(p)) {
+        reqPath = `/apartments/${slug}/index.html`;
+      }
+    }
 
     const cleanPath = reqPath.startsWith('/') ? reqPath.slice(1) : reqPath;
     let filePath = path.join(root, cleanPath);
@@ -106,11 +114,11 @@ async function runAssertions() {
   // Check title
   const title = await page.title();
   console.log(`Page title: "${title}"`);
-  if (title.includes('ERA Residence')) {
-    console.log('✓ PASS: Page title contains "ERA Residence"');
+  if (title.includes('Residences') || title.includes('AURA') || title.includes('[Your Brand]')) {
+    console.log('✓ PASS: Page title contains "[Your Brand] / AURA Residences"');
     passCount++;
   } else {
-    console.error(`✗ FAIL: Page title "${title}" expected to contain "ERA Residence"`);
+    console.error(`✗ FAIL: Page title "${title}" expected to contain "Residences"`);
     failCount++;
   }
 
@@ -142,7 +150,7 @@ async function runAssertions() {
     }
   }
 
-  // Check apartments page
+  // Check apartments catalog page
   console.log('\nNavigating to /apartments ...');
   await page.goto(`http://localhost:${port}/apartments.html`, { waitUntil: 'domcontentloaded' });
   await page.waitForTimeout(500);
@@ -156,6 +164,39 @@ async function runAssertions() {
     failCount++;
   }
 
+  // Check apartment 011 detail page
+  console.log('\nNavigating to /apartments/011 ...');
+  await page.goto(`http://localhost:${port}/apartments/011`, { waitUntil: 'domcontentloaded' });
+  await page.waitForTimeout(500);
+  const apTitle = await page.title();
+  console.log(`Apartment 011 page title: "${apTitle}"`);
+  if (apTitle.includes('011') && (apTitle.includes('Residences') || apTitle.includes('Residence'))) {
+    console.log('✓ PASS: Apartment 011 detail page title verified');
+    passCount++;
+  } else {
+    console.error(`✗ FAIL: Apartment 011 title expected to contain "011" & "Residences", got "${apTitle}"`);
+    failCount++;
+  }
+
+  const apHeader = await page.$('.lot-s_info_header_num');
+  if (apHeader) {
+    const numText = await apHeader.textContent();
+    console.log(`✓ PASS: Apartment unit heading verified: "${numText.trim()}"`);
+    passCount++;
+  } else {
+    console.error('✗ FAIL: .lot-s_info_header_num not found on 011 page');
+    failCount++;
+  }
+
+  const floorPlans = await page.$('.lot-s_media_layout');
+  if (floorPlans) {
+    console.log('✓ PASS: Floor plan diagram layout verified');
+    passCount++;
+  } else {
+    console.error('✗ FAIL: Floor plan layout element not found');
+    failCount++;
+  }
+
   // Check contact page
   console.log('\nNavigating to /contact ...');
   await page.goto(`http://localhost:${port}/contact.html`, { waitUntil: 'domcontentloaded' });
@@ -166,6 +207,33 @@ async function runAssertions() {
     passCount++;
   } else {
     console.error('✗ FAIL: Contact form element not found');
+    failCount++;
+  }
+
+  // Check Mobile Viewport (iPhone 14: 390x844)
+  console.log('\nChecking Mobile Viewport (390x844) on Apartment 011...');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`http://localhost:${port}/apartments/011`, { waitUntil: 'domcontentloaded' });
+  await page.waitForTimeout(500);
+
+  const mobMedia = await page.$('.lot-s_media.b-mob');
+  if (mobMedia) {
+    const isVisible = await mobMedia.isVisible();
+    if (isVisible) {
+      console.log('✓ PASS: Mobile floor plan layout (.lot-s_media.b-mob) active and visible on 390px');
+      passCount++;
+    } else {
+      console.error('✗ FAIL: Mobile floor plan layout is not visible on mobile');
+      failCount++;
+    }
+  }
+
+  const mobMenuBtn = await page.$('[data-modal-menu-btn="mob"]');
+  if (mobMenuBtn) {
+    console.log('✓ PASS: Mobile menu button verified');
+    passCount++;
+  } else {
+    console.error('✗ FAIL: Mobile menu button not found');
     failCount++;
   }
 

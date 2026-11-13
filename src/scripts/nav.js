@@ -1,5 +1,5 @@
 /**
- * Navigation, Modals & Interactive Micro-Interactions — ERA Residence
+ * Navigation, Modals & Interactive Micro-Interactions — AURA Residence
  */
 
 export function initCookies() {
@@ -9,7 +9,7 @@ export function initCookies() {
   const acceptBtn = cookieBanner.querySelector('[href="#"][class*="link"], a:first-of-type, [data-cookie-accept]');
   const declineBtn = cookieBanner.querySelector('a:last-of-type, [data-cookie-decline]');
 
-  const accepted = localStorage.getItem('era_cookies_accepted');
+  const accepted = localStorage.getItem('aura_cookies_accepted');
   if (accepted) {
     cookieBanner.style.display = 'none';
   }
@@ -17,7 +17,7 @@ export function initCookies() {
   if (acceptBtn) {
     acceptBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      localStorage.setItem('era_cookies_accepted', 'true');
+      localStorage.setItem('aura_cookies_accepted', 'true');
       if (typeof gsap !== 'undefined') {
         gsap.to(cookieBanner, { opacity: 0, y: 20, duration: 0.4, onComplete: () => { cookieBanner.style.display = 'none'; } });
       } else {
@@ -29,7 +29,7 @@ export function initCookies() {
   if (declineBtn) {
     declineBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      localStorage.setItem('era_cookies_accepted', 'false');
+      localStorage.setItem('aura_cookies_accepted', 'false');
       if (typeof gsap !== 'undefined') {
         gsap.to(cookieBanner, { opacity: 0, y: 20, duration: 0.4, onComplete: () => { cookieBanner.style.display = 'none'; } });
       } else {
