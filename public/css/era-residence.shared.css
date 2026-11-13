@@ -719,4 +719,23 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
     cursor: pointer !important;
     font-size: 13px !important;
   }
+
+  /* 9:16 Portrait Amenity Images for Phone View */
+  .amen-slide_img .img-p.b-mob {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  .amen-slide_img .img-p.b-desk {
+    display: none !important;
+  }
 }
+
+@media screen and (min-width: 992px) {
+  .amen-slide_img .img-p.b-mob {
+    display: none !important;
+  }
+}
+

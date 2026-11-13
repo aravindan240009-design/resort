@@ -1037,6 +1037,30 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
     }
   }
 
+  // 10i. Amenities 9:16 Portrait Images for Phone View (Prevents horizontal crop on mobile)
+  if (pageType === 'home') {
+    const mobAmenityImages = {
+      'gated-community': '/assets/images/era-residence-gated-community-mob.jpg',
+      'swimming-pool-2': '/assets/images/era-residence-pool-mob.jpg',
+      'swimming-pool': '/assets/images/era-residence-parking-mob.jpg',
+      'spa-gym': '/assets/images/era-residence-spa-gym-mob.jpg',
+      'landscaping': '/assets/images/era-residence-landscaping-mob.jpg'
+    };
+
+    for (const [tabKey, mobSrc] of Object.entries(mobAmenityImages)) {
+      const tabMarker = `data-tab-content="${tabKey}"`;
+      const tabIdx = res.indexOf(tabMarker);
+      if (tabIdx !== -1) {
+        const imgTarget = 'class="img-p"/>';
+        const imgIdx = res.indexOf(imgTarget, tabIdx);
+        if (imgIdx !== -1 && !res.slice(tabIdx, imgIdx + 200).includes('b-mob')) {
+          const mobImg = `<img data-parallax="img-in" loading="eager" alt="${tabKey}" src="${mobSrc}" class="img-p b-mob"/>`;
+          res = res.slice(0, imgIdx) + 'class="img-p b-desk"/>' + mobImg + res.slice(imgIdx + imgTarget.length);
+        }
+      }
+    }
+  }
+
   // 11. Add font preloads, enhancements, and dummy redirect handler in <head>
   if (!res.includes('id="aura-template-enhancements"')) {
     res = res.replace('</head>', headEnhancements + '\n</head>');
