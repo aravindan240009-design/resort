@@ -151,11 +151,29 @@ video {
     overflow: hidden !important;
   }
 
-  /* Reset GSAP scroll-reveal transforms on mobile so elements sit naturally in normal document flow */
+  /* Reset GSAP scroll-reveal & parallax transforms on mobile so elements sit naturally in normal document flow */
   [data-scroll-reveal],
   [data-scroll-reveal] *,
   [data-part],
   [data-part] *,
+  [data-parallax],
+  [data-parallax] *,
+  [data-scrub-reveal],
+  [data-scrub-reveal] *,
+  .loc-info-s,
+  .loc-info-s *,
+  .loc-intro-s,
+  .loc-intro-s *,
+  .loc-path-s,
+  .loc-path-s *,
+  .footer-s,
+  .footer-s *,
+  .quote-s,
+  .quote-s *,
+  .hero-s,
+  .hero-s *,
+  .benefits-intro-s,
+  .benefits-intro-s *,
   .split-line-mask,
   .split-line,
   .split-word-mask,
@@ -165,6 +183,128 @@ video {
     transform: none !important;
     translate: none !important;
     visibility: visible !important;
+  }
+
+  /* Eliminate multi-viewport artificial empty space on mobile */
+  .hero-scroll-area {
+    height: 100vh !important;
+    min-height: 580px !important;
+    max-height: 844px !important;
+    position: relative !important;
+  }
+  .hero-w {
+    position: relative !important;
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+  .hero-w_bg {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+  }
+  .hero-w_bg_master {
+    height: 100% !important;
+  }
+  .hero_themes {
+    display: none !important;
+    height: 0 !important;
+  }
+  .slow-scroll-trigger {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  /* Compact spacers: Eliminate giant empty voids on mobile */
+  .u-272.b-mob,
+  .u-272 {
+    height: clamp(24px, 5vw, 40px) !important;
+  }
+  .u-160.b-mob,
+  .u-160 {
+    height: clamp(20px, 4vw, 32px) !important;
+  }
+  .u-96.b-mob,
+  .u-96 {
+    height: clamp(16px, 3vw, 24px) !important;
+  }
+  .u-64 {
+    height: clamp(14px, 2.5vw, 20px) !important;
+  }
+  .u-48.b-mob,
+  .u-48 {
+    height: clamp(12px, 2vw, 16px) !important;
+  }
+
+  /* Location section: Stack children vertically so content flows naturally */
+  .loc-scroll-area {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: relative !important;
+    display: block !important;
+  }
+  .loc-scroll-area_screen {
+    display: block !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  .loc-scroll-area_track {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+  .loc-info-w,
+  .loc-intro-w,
+  .loc-path-w {
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    overflow: visible !important;
+    display: block !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Amenities section */
+  .amen-scroll-area {
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    display: block !important;
+  }
+  .amen-scroll-area .scroll-area_screen {
+    height: auto !important;
+    min-height: 500px !important;
+    position: relative !important;
+  }
+  .amen-scroll-area .hero_themes {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  /* Footer section */
+  .footer-s {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 48px 16px 32px !important;
+  }
+  .footer-s_s-top {
+    display: none !important;
   }
 
   /* Hero Section Mobile Proportions */
