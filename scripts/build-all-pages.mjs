@@ -377,6 +377,101 @@ const headEnhancements = `
       }
 
       .apart-item_card { margin-bottom: 2rem !important; }
+
+      /* Mobile Apartment Media Scroll Gallery Navigation & Snapping */
+      .lot-s_media.b-mob {
+        position: relative !important;
+        overflow: visible !important;
+      }
+
+      .lot-s_media.b-mob .lot-s_media_c {
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+
+      .lot-s_media.b-mob .lot-s_media_layout_img-prim,
+      .lot-s_media.b-mob .lot-media-cms_list_item {
+        scroll-snap-align: start !important;
+        scroll-snap-stop: always !important;
+      }
+
+      .apt-media-nav {
+        position: absolute !important;
+        top: 50% !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 8px !important;
+      }
+
+      .apt-media-btn {
+        pointer-events: auto !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        background: rgba(29, 37, 44, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        color: #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+        transition: transform 0.15s ease, opacity 0.25s ease, background-color 0.2s ease !important;
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        user-select: none !important;
+      }
+
+      .apt-media-btn:active {
+        transform: scale(0.92) !important;
+        background: rgba(29, 37, 44, 0.98) !important;
+      }
+
+      .apt-media-btn:disabled,
+      .apt-media-btn[disabled] {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: scale(0.85) !important;
+      }
+
+      .apt-media-counter {
+        position: absolute !important;
+        bottom: 12px !important;
+        right: 14px !important;
+        pointer-events: auto !important;
+        background: rgba(29, 37, 44, 0.82) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        color: #ffffff !important;
+        font-family: inherit !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.08em !important;
+        padding: 4px 12px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        z-index: 10 !important;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .apt-media-nav,
+      .apt-media-counter {
+        display: none !important;
+      }
     }
   </style>
   <script id="aura-dummy-redirect-handler">
@@ -590,6 +685,112 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
   res = res.replace(/©<span class="year">2026<\/span> All rights reserved/gi,
     '©<span class="year">2026</span> [Your Company Name]. All rights reserved.'
   );
+  // 10h. Apartment Mobile Media Gallery Scroll Navigation (Left/Right Buttons & Counter)
+  if (pageType === 'apartment') {
+    const navHtml = `<div class="apt-media-nav" data-apt-media-nav><button type="button" class="apt-media-btn prev" aria-label="Previous image" data-apt-btn="prev" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><button type="button" class="apt-media-btn next" aria-label="Next image" data-apt-btn="next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button></div><div class="apt-media-counter" data-apt-counter><span class="apt-cur">1</span> / <span class="apt-tot">1</span></div>`;
+
+    res = res.replace(
+      /(<div class="lot-s_media b-mob">)([\s\S]*?)(<div class="lot-s_media_c[^"]*">)/i,
+      `$1${navHtml}$2$3`
+    );
+
+    const scriptHtml = `
+<script id="aura-apt-media-nav-handler">
+(function() {
+  function setupAptMediaNav() {
+    document.querySelectorAll('.lot-s_media.b-mob').forEach(function(container) {
+      if (container.dataset.aptNavInitialized) return;
+      container.dataset.aptNavInitialized = 'true';
+
+      var scroller = container.querySelector('.lot-s_media_c');
+      if (!scroller) return;
+
+      var prevBtn = container.querySelector('[data-apt-btn="prev"]');
+      var nextBtn = container.querySelector('[data-apt-btn="next"]');
+      var curSpan = container.querySelector('.apt-cur');
+      var totSpan = container.querySelector('.apt-tot');
+
+      function getItems() {
+        return Array.from(container.querySelectorAll('.lot-s_media_layout_img-prim, .lot-media-cms_list_item'));
+      }
+
+      function updateNav() {
+        var items = getItems();
+        if (!items.length) return;
+        if (totSpan) totSpan.textContent = items.length;
+
+        var sl = scroller.scrollLeft;
+        var scrollerLeft = scroller.getBoundingClientRect().left;
+
+        var activeIdx = 0;
+        items.forEach(function(item, idx) {
+          var rect = item.getBoundingClientRect();
+          if (rect.left - scrollerLeft < scroller.clientWidth * 0.45) {
+            activeIdx = idx;
+          }
+        });
+
+        if (curSpan) curSpan.textContent = activeIdx + 1;
+        if (prevBtn) prevBtn.disabled = activeIdx === 0;
+        if (nextBtn) nextBtn.disabled = activeIdx >= items.length - 1;
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var items = getItems();
+          var scrollerLeft = scroller.getBoundingClientRect().left;
+          var nextItem = items.find(function(it) {
+            return (it.getBoundingClientRect().left - scrollerLeft) > 20;
+          });
+          if (nextItem) {
+            scroller.scrollBy({ left: nextItem.getBoundingClientRect().left - scrollerLeft, behavior: 'smooth' });
+          } else {
+            scroller.scrollBy({ left: scroller.clientWidth * 0.85, behavior: 'smooth' });
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var items = getItems();
+          var scrollerLeft = scroller.getBoundingClientRect().left;
+          var prevItems = items.filter(function(it) {
+            return (it.getBoundingClientRect().left - scrollerLeft) < -20;
+          });
+          if (prevItems.length > 0) {
+            var prevItem = prevItems[prevItems.length - 1];
+            scroller.scrollBy({ left: prevItem.getBoundingClientRect().left - scrollerLeft, behavior: 'smooth' });
+          } else {
+            scroller.scrollTo({ left: 0, behavior: 'smooth' });
+          }
+        });
+      }
+
+      scroller.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+      setTimeout(updateNav, 300);
+      setTimeout(updateNav, 1000);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupAptMediaNav);
+  } else {
+    setupAptMediaNav();
+  }
+  window.addEventListener('resize', setupAptMediaNav);
+})();
+</script>`;
+
+    if (!res.includes('id="aura-apt-media-nav-handler"')) {
+      res = res.replace('</body>', scriptHtml + '\n</body>');
+    }
+  }
+
   // 11. Add font preloads, enhancements, and dummy redirect handler in <head>
   if (!res.includes('id="aura-template-enhancements"')) {
     res = res.replace('</head>', headEnhancements + '\n</head>');

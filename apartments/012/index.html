@@ -439,6 +439,101 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       }
 
       .apart-item_card { margin-bottom: 2rem !important; }
+
+      /* Mobile Apartment Media Scroll Gallery Navigation & Snapping */
+      .lot-s_media.b-mob {
+        position: relative !important;
+        overflow: visible !important;
+      }
+
+      .lot-s_media.b-mob .lot-s_media_c {
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+
+      .lot-s_media.b-mob .lot-s_media_layout_img-prim,
+      .lot-s_media.b-mob .lot-media-cms_list_item {
+        scroll-snap-align: start !important;
+        scroll-snap-stop: always !important;
+      }
+
+      .apt-media-nav {
+        position: absolute !important;
+        top: 50% !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+        pointer-events: none !important;
+        z-index: 10 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 8px !important;
+      }
+
+      .apt-media-btn {
+        pointer-events: auto !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        background: rgba(29, 37, 44, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        color: #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+        transition: transform 0.15s ease, opacity 0.25s ease, background-color 0.2s ease !important;
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        user-select: none !important;
+      }
+
+      .apt-media-btn:active {
+        transform: scale(0.92) !important;
+        background: rgba(29, 37, 44, 0.98) !important;
+      }
+
+      .apt-media-btn:disabled,
+      .apt-media-btn[disabled] {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: scale(0.85) !important;
+      }
+
+      .apt-media-counter {
+        position: absolute !important;
+        bottom: 12px !important;
+        right: 14px !important;
+        pointer-events: auto !important;
+        background: rgba(29, 37, 44, 0.82) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        color: #ffffff !important;
+        font-family: inherit !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.08em !important;
+        padding: 4px 12px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        z-index: 10 !important;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .apt-media-nav,
+      .apt-media-counter {
+        display: none !important;
+      }
     }
   </style>
   <script id="aura-dummy-redirect-handler">
@@ -1222,7 +1317,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   .compass {
     rotate: -165deg;
   }
-</style></div></div></div></div></div><div class="u-24"></div><h2 data-type="ground-floor-basement" class="l2">Ground floor + basement</h2><div class="u-4"></div><h3 id="" class="l2 reg"><span>Completion: </span><span>4Q 2026</span></h3><div class="u-16"></div></div><div class="lot-s_media b-mob"><div class="lot-s_media_c scrollbar-none"><div class="lot-s_media_layout"><div class="lot-s_media_layout_img-prim"><img src="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-500.webp 500w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-800.webp 800w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1080.webp 1080w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1600.webp 1600w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-2000.webp 2000w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp 2350w" class="img contain"/></div></div><div class="lot-media-cms w-dyn-list"><script type="text/x-wf-template" id="wf-template-09607e1b-c0a8-4040-1ec8-49766886a6e2">%3Cdiv%20role%3D%22listitem%22%20class%3D%22lot-media-cms_list_item%20w-dyn-item%20w-dyn-repeater-item%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp%22%20loading%3D%22eager%22%20data-lightbox%3D%22%22%20alt%3D%22%22%20sizes%3D%22100vw%22%20srcset%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-500.webp%20500w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-800.webp%20800w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1080.webp%201080w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1600.webp%201600w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp%201920w%22%20class%3D%22img%20_w-auto%22%2F%3E%3C%2Fdiv%3E</script><div role="list" class="lot-media-cms_list w-dyn-items"><div role="listitem" class="lot-media-cms_list_item w-dyn-item w-dyn-repeater-item"><img src="/assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-500.webp 500w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-800.webp 800w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1080.webp 1080w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1600.webp 1600w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp 1920w" class="img _w-auto"/></div><div role="listitem" class="lot-media-cms_list_item w-dyn-item w-dyn-repeater-item"><img src="/assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-500.webp 500w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-800.webp 800w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-1080.webp 1080w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-1600.webp 1600w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor.webp 1920w" class="img _w-auto"/></div><div role="listitem" class="lot-media-cms_list_item w-dyn-item w-dyn-repeater-item"><img src="/assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-500.webp 500w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-800.webp 800w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-1080.webp 1080w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-1600.webp 1600w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen.webp 1920w" class="img _w-auto"/></div></div><div class="cms_empty-none w-dyn-hide w-dyn-empty"></div></div></div></div><div data-lenis-scroll="" class="lot-s_info_t scrollbar-none"><div class="u-64"></div><div class="lot-s_info_data"><div class="data-item"><h4 class="l1 reg">Bedrooms</h4><div class="u-8"></div><h5 class="h5">3</h5></div><div class="data-item"><h4 class="l1 reg">Interior area</h4><div class="u-8"></div><h5 class="h5">132 m²</h5></div><div class="data-item"><h4 class="l1 reg">Terrace</h4><div class="u-8"></div><h5 class="h5">29 M²</h5></div><div class="data-item"><h4 class="l1 reg">Garden</h4><div class="u-8"></div><h5 class="h5">33 M²</h5></div></div><div class="u-48"></div><div data-tabs="" class="lot-s_info_more"><div data-tabs-hilight="hor" class="tabs"><div data-tab="" data-tab-trigger="desc" hover-tab="" class="tab"><div class="l1">Info</div></div><div data-tab="" data-tab-trigger="benefits" hover-tab="" class="tab"><div class="l1">Benefits</div></div><div class="tabs_line"><div class="line-h"></div></div><div data-tab-hilight="" class="tabs_hilight"></div></div><div class="lot-s_info_more_contents"><div data-tab-content="desc" class="lot-s_info_more_content is-1"><div class="u-16"></div><p data-tab="p" class="p1">Three bedrooms, open-plan living, and a large terrace that connects directly to the communal garden and pool area.</p><div class="u-160 b-desk"></div></div><div data-tab-content="benefits" class="lot-s_info_more_content"><div class="u-16"></div><div class="benefits-tag-cms w-dyn-list"><div role="list" class="benefits-tag-cms_list tag-list w-dyn-items"><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Pool &amp; gym</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Storage</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Energy B</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Parking</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Aerothermal</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Stone floors</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Villeroy &amp; Boch</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Underfloor heating</h4></div></div></div></div><div class="u-160 b-desk"></div></div></div></div></div><div class="lot-s_info_b"><div class="u-48 b-mob"></div><div class="u-16 b-desk"></div><div class="btn-list"><a data-modal-cta-btn="book-a-call" hover-btn="" hover-nav-item="" aria-label="Submit a request" data-wf--btn--variant="sec" href="#" class="btn w-inline-block"><div class="btn_label"><div class="btn_label_text"><div hover="text" class="l1">Submit a request</div></div><div class="btn_label_text is-2"><div hover="text" class="l1">Submit a request</div></div></div><div class="btn_bg"><div hover="bg" class="btn_bg_fill"></div></div></a><a aria-label="pdf" hover-btn="" hover-nav-item="" data-wf--btn--variant="sec-circle" href="/assets/images/6a3526b31c1ec9d9ae5fd224_012apt_compressed.pdf" class="btn w-variant-9f3f61aa-a2e8-bef6-01f9-2f3463919d6d w-inline-block"><div class="btn_label"><div class="btn_label_text"><div hover="text" class="l1">pdf</div></div><div class="btn_label_text is-2"><div hover="text" class="l1">pdf</div></div></div><div class="btn_bg"><div hover="bg" class="btn_bg_fill"></div></div></a></div><div class="u-48"></div></div><div class="lot-s_info_line is-top"><div data-scroll-reveal="line" class="line-v"></div></div></div></div></div><div class="lot-s_media b-desk"><div class="grid"><div class="lot-s_media_c"><div class="lot-s_media_layout"><div class="grid _5-columns"><div hover-pin-trigger="" hover-media-item="" class="lot-s_media_layout_img-prim theme_on-color"><img src="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-500.webp 500w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-800.webp 800w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1080.webp 1080w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1600.webp 1600w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-2000.webp 2000w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp 2350w" class="img contain"/><div hover="btn" class="lot-media-item_btn"><div hover-pin="" class="pin"><div hover="bg" class="pin_dot"><div hover="ico" class="ico-16 theme_on-light"><div class="ico w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+</style></div></div></div></div></div><div class="u-24"></div><h2 data-type="ground-floor-basement" class="l2">Ground floor + basement</h2><div class="u-4"></div><h3 id="" class="l2 reg"><span>Completion: </span><span>4Q 2026</span></h3><div class="u-16"></div></div><div class="lot-s_media b-mob"><div class="apt-media-nav" data-apt-media-nav><button type="button" class="apt-media-btn prev" aria-label="Previous image" data-apt-btn="prev" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button><button type="button" class="apt-media-btn next" aria-label="Next image" data-apt-btn="next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button></div><div class="apt-media-counter" data-apt-counter><span class="apt-cur">1</span> / <span class="apt-tot">1</span></div><div class="lot-s_media_c scrollbar-none"><div class="lot-s_media_layout"><div class="lot-s_media_layout_img-prim"><img src="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-500.webp 500w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-800.webp 800w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1080.webp 1080w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1600.webp 1600w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-2000.webp 2000w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp 2350w" class="img contain"/></div></div><div class="lot-media-cms w-dyn-list"><script type="text/x-wf-template" id="wf-template-09607e1b-c0a8-4040-1ec8-49766886a6e2">%3Cdiv%20role%3D%22listitem%22%20class%3D%22lot-media-cms_list_item%20w-dyn-item%20w-dyn-repeater-item%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp%22%20loading%3D%22eager%22%20data-lightbox%3D%22%22%20alt%3D%22%22%20sizes%3D%22100vw%22%20srcset%3D%22https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-500.webp%20500w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-800.webp%20800w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1080.webp%201080w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1600.webp%201600w%2C%20https%3A%2F%2Fcdn.prod.website-files.com%2F6a0853d5dab31b18f0677081%2F6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp%201920w%22%20class%3D%22img%20_w-auto%22%2F%3E%3C%2Fdiv%3E</script><div role="list" class="lot-media-cms_list w-dyn-items"><div role="listitem" class="lot-media-cms_list_item w-dyn-item w-dyn-repeater-item"><img src="/assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-500.webp 500w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-800.webp 800w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1080.webp 1080w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom-p-1600.webp 1600w, /assets/images/6a1e3e018e13335cdfe5bffc_era-residence-bathroom.webp 1920w" class="img _w-auto"/></div><div role="listitem" class="lot-media-cms_list_item w-dyn-item w-dyn-repeater-item"><img src="/assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-500.webp 500w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-800.webp 800w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-1080.webp 1080w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor-p-1600.webp 1600w, /assets/images/6a1e3e0735b657ba4b1313cc_era-residence-ground-floor.webp 1920w" class="img _w-auto"/></div><div role="listitem" class="lot-media-cms_list_item w-dyn-item w-dyn-repeater-item"><img src="/assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-500.webp 500w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-800.webp 800w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-1080.webp 1080w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen-p-1600.webp 1600w, /assets/images/6a1e3e0cf0513cfd006653b6_era-residence-kitchen.webp 1920w" class="img _w-auto"/></div></div><div class="cms_empty-none w-dyn-hide w-dyn-empty"></div></div></div></div><div data-lenis-scroll="" class="lot-s_info_t scrollbar-none"><div class="u-64"></div><div class="lot-s_info_data"><div class="data-item"><h4 class="l1 reg">Bedrooms</h4><div class="u-8"></div><h5 class="h5">3</h5></div><div class="data-item"><h4 class="l1 reg">Interior area</h4><div class="u-8"></div><h5 class="h5">132 m²</h5></div><div class="data-item"><h4 class="l1 reg">Terrace</h4><div class="u-8"></div><h5 class="h5">29 M²</h5></div><div class="data-item"><h4 class="l1 reg">Garden</h4><div class="u-8"></div><h5 class="h5">33 M²</h5></div></div><div class="u-48"></div><div data-tabs="" class="lot-s_info_more"><div data-tabs-hilight="hor" class="tabs"><div data-tab="" data-tab-trigger="desc" hover-tab="" class="tab"><div class="l1">Info</div></div><div data-tab="" data-tab-trigger="benefits" hover-tab="" class="tab"><div class="l1">Benefits</div></div><div class="tabs_line"><div class="line-h"></div></div><div data-tab-hilight="" class="tabs_hilight"></div></div><div class="lot-s_info_more_contents"><div data-tab-content="desc" class="lot-s_info_more_content is-1"><div class="u-16"></div><p data-tab="p" class="p1">Three bedrooms, open-plan living, and a large terrace that connects directly to the communal garden and pool area.</p><div class="u-160 b-desk"></div></div><div data-tab-content="benefits" class="lot-s_info_more_content"><div class="u-16"></div><div class="benefits-tag-cms w-dyn-list"><div role="list" class="benefits-tag-cms_list tag-list w-dyn-items"><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Pool &amp; gym</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Storage</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Energy B</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Parking</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Aerothermal</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Stone floors</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Villeroy &amp; Boch</h4></div></div><div data-tab="p" role="listitem" class="benefits-tag-cms_list_item w-dyn-item"><div class="tag"><h4 class="p2">Underfloor heating</h4></div></div></div></div><div class="u-160 b-desk"></div></div></div></div></div><div class="lot-s_info_b"><div class="u-48 b-mob"></div><div class="u-16 b-desk"></div><div class="btn-list"><a data-modal-cta-btn="book-a-call" hover-btn="" hover-nav-item="" aria-label="Submit a request" data-wf--btn--variant="sec" href="#" class="btn w-inline-block"><div class="btn_label"><div class="btn_label_text"><div hover="text" class="l1">Submit a request</div></div><div class="btn_label_text is-2"><div hover="text" class="l1">Submit a request</div></div></div><div class="btn_bg"><div hover="bg" class="btn_bg_fill"></div></div></a><a aria-label="pdf" hover-btn="" hover-nav-item="" data-wf--btn--variant="sec-circle" href="/assets/images/6a3526b31c1ec9d9ae5fd224_012apt_compressed.pdf" class="btn w-variant-9f3f61aa-a2e8-bef6-01f9-2f3463919d6d w-inline-block"><div class="btn_label"><div class="btn_label_text"><div hover="text" class="l1">pdf</div></div><div class="btn_label_text is-2"><div hover="text" class="l1">pdf</div></div></div><div class="btn_bg"><div hover="bg" class="btn_bg_fill"></div></div></a></div><div class="u-48"></div></div><div class="lot-s_info_line is-top"><div data-scroll-reveal="line" class="line-v"></div></div></div></div></div><div class="lot-s_media b-desk"><div class="grid"><div class="lot-s_media_c"><div class="lot-s_media_layout"><div class="grid _5-columns"><div hover-pin-trigger="" hover-media-item="" class="lot-s_media_layout_img-prim theme_on-color"><img src="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp" loading="eager" data-lightbox="" alt="" sizes="100vw" srcset="/assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-500.webp 500w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-800.webp 800w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1080.webp 1080w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-1600.webp 1600w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12-p-2000.webp 2000w, /assets/images/6a345dd6f7eed0819955b9b1_6a345c762f8a29dd9c9b38d7_12.webp 2350w" class="img contain"/><div hover="btn" class="lot-media-item_btn"><div hover-pin="" class="pin"><div hover="bg" class="pin_dot"><div hover="ico" class="ico-16 theme_on-light"><div class="ico w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11.5292 3.52827C11.7896 3.26792 12.2123 3.26792 12.4726 3.52827C12.733 3.78862 12.733 4.21128 12.4726 4.47163L8.94429 7.99995L12.4726 11.5283C12.733 11.7886 12.733 12.2113 12.4726 12.4716C12.2123 12.732 11.7896 12.732 11.5292 12.4716L8.00093 8.94331L4.47261 12.4716C4.21226 12.732 3.7896 12.732 3.52925 12.4716C3.2689 12.2113 3.2689 11.7886 3.52925 11.5283L7.05757 7.99995L3.52925 4.47163C3.2689 4.21128 3.2689 3.78862 3.52925 3.52827C3.7896 3.26792 4.21226 3.26792 4.47261 3.52827L8.00093 7.05659L11.5292 3.52827Z" fill="currentColor"/>
 </svg></div></div></div><div class="pin_bg"><div data-pin-pulse="" class="pin_bg_pulse"></div><div data-pin-pulse="" class="pin_bg_pulse"></div></div></div></div></div><div class="lot-s_media_layout_diagrams"><div class="block-diagram"><img src="/assets/images/6a249dc092c518a59f92b1f1_diagram_block-1.svg" loading="eager" alt="" class="block-diagram_hilight"/><img src="/assets/images/6a249dc054dbb1a98ab052ea_blocks-diagram.svg" loading="eager" alt="" class="img"/></div><div class="compass"><div class="l1 a-center">N</div><div class="style-css w-embed"><style>
   .compass {
@@ -2512,4 +2607,95 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 <script type="module" src="/src/scripts/main.js"></script>
 
 
+
+<script id="aura-apt-media-nav-handler">
+(function() {
+  function setupAptMediaNav() {
+    document.querySelectorAll('.lot-s_media.b-mob').forEach(function(container) {
+      if (container.dataset.aptNavInitialized) return;
+      container.dataset.aptNavInitialized = 'true';
+
+      var scroller = container.querySelector('.lot-s_media_c');
+      if (!scroller) return;
+
+      var prevBtn = container.querySelector('[data-apt-btn="prev"]');
+      var nextBtn = container.querySelector('[data-apt-btn="next"]');
+      var curSpan = container.querySelector('.apt-cur');
+      var totSpan = container.querySelector('.apt-tot');
+
+      function getItems() {
+        return Array.from(container.querySelectorAll('.lot-s_media_layout_img-prim, .lot-media-cms_list_item'));
+      }
+
+      function updateNav() {
+        var items = getItems();
+        if (!items.length) return;
+        if (totSpan) totSpan.textContent = items.length;
+
+        var sl = scroller.scrollLeft;
+        var scrollerLeft = scroller.getBoundingClientRect().left;
+
+        var activeIdx = 0;
+        items.forEach(function(item, idx) {
+          var rect = item.getBoundingClientRect();
+          if (rect.left - scrollerLeft < scroller.clientWidth * 0.45) {
+            activeIdx = idx;
+          }
+        });
+
+        if (curSpan) curSpan.textContent = activeIdx + 1;
+        if (prevBtn) prevBtn.disabled = activeIdx === 0;
+        if (nextBtn) nextBtn.disabled = activeIdx >= items.length - 1;
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var items = getItems();
+          var scrollerLeft = scroller.getBoundingClientRect().left;
+          var nextItem = items.find(function(it) {
+            return (it.getBoundingClientRect().left - scrollerLeft) > 20;
+          });
+          if (nextItem) {
+            scroller.scrollBy({ left: nextItem.getBoundingClientRect().left - scrollerLeft, behavior: 'smooth' });
+          } else {
+            scroller.scrollBy({ left: scroller.clientWidth * 0.85, behavior: 'smooth' });
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var items = getItems();
+          var scrollerLeft = scroller.getBoundingClientRect().left;
+          var prevItems = items.filter(function(it) {
+            return (it.getBoundingClientRect().left - scrollerLeft) < -20;
+          });
+          if (prevItems.length > 0) {
+            var prevItem = prevItems[prevItems.length - 1];
+            scroller.scrollBy({ left: prevItem.getBoundingClientRect().left - scrollerLeft, behavior: 'smooth' });
+          } else {
+            scroller.scrollTo({ left: 0, behavior: 'smooth' });
+          }
+        });
+      }
+
+      scroller.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+      setTimeout(updateNav, 300);
+      setTimeout(updateNav, 1000);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupAptMediaNav);
+  } else {
+    setupAptMediaNav();
+  }
+  window.addEventListener('resize', setupAptMediaNav);
+})();
+</script>
 </body></html>
