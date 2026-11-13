@@ -50,688 +50,144 @@ const headEnhancements = `
     }
   </style>
   <style id="aura-template-enhancements">
+    /* 1. Flower Background Fix: 100% transparent knockout of poster & video white boxes */
+    .flower,
+    .flower video,
+    .flower img,
+    .flower svg,
+    .loc-path-w_flower .flower {
+      mix-blend-mode: multiply !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      pointer-events: none !important;
+      isolation: auto !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
 
-/* 1. Flower Background & Effects: 100% transparent knockout & rich vibrancy */
-.flower,
-.loc-path-w_flower .flower {
-  mix-blend-mode: multiply !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  isolation: auto !important;
-}
+    /* 2. Hero Title Font Size Reduction (Clean Luxury Proportion) */
+    .hero-s_logo .h1 {
+      font-size: clamp(56px, 5.2vw, 82px) !important;
+      line-height: 0.95 !important;
+      letter-spacing: 0.01em !important;
+    }
+    .hero-s_logo_a .a2 {
+      font-size: clamp(32px, 3vw, 48px) !important;
+      margin-top: -1.2rem !important;
+      margin-left: -0.8rem !important;
+    }
 
-.flower video,
-.flower img,
-.flower svg {
-  mix-blend-mode: multiply !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
-  object-fit: contain !important;
-  opacity: 1 !important;
-}
+    /* 2b. Floating Tip Cards with Architectural Images */
+    .floating-tip-card {
+      min-height: 390px !important;
+      height: auto !important;
+      aspect-ratio: auto !important;
+    }
+    .floating-tip-card_img {
+      position: relative !important;
+      z-index: 1 !important;
+      flex-shrink: 0 !important;
+    }
 
-video {
-  background-color: transparent !important;
-  background: transparent !important;
-}
+    /* 3. Responsive Mobile Phone Optimizations (<= 991px & <= 767px) */
+    @media screen and (max-width: 991px) {
+      .hero-s_logo .h1 {
+        font-size: clamp(32px, 8.5vw, 48px) !important;
+        line-height: 0.95 !important;
+      }
+      .hero-s_logo_a .a2 {
+        font-size: clamp(22px, 5.5vw, 34px) !important;
+        margin-top: -0.8rem !important;
+        margin-left: -0.4rem !important;
+      }
+      /* Compact spacers: remove excessive padding and whitespace on phone view */
+      .u-272.b-mob, .u-272 { height: clamp(24px, 5vw, 36px) !important; }
+      .u-160.b-mob, .u-160 { height: clamp(18px, 4vw, 28px) !important; }
+      .u-96.b-mob, .u-96 { height: clamp(14px, 3vw, 22px) !important; }
+      .u-64.b-mob, .u-64 { height: clamp(12px, 2.5vw, 18px) !important; }
+      .u-48.b-mob, .u-48 { height: clamp(10px, 2vw, 16px) !important; }
+      .u-32.b-mob, .u-32 { height: clamp(8px, 1.8vw, 14px) !important; }
 
-/* 2. Hero Title Font Size & Desktop Alignment (Clean Luxury Proportion) */
-.hero-s_logo .h1 {
-  font-size: clamp(56px, 5.2vw, 82px) !important;
-  line-height: 0.92 !important;
-  letter-spacing: 0.01em !important;
-  text-align: center !important;
-}
+      /* Reduce empty viewport voids on mobile sections */
+      .apart-info-s,
+      .loc-info-s,
+      .loc-intro-s,
+      .quote-s,
+      .benefit-slide {
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: clamp(20px, 4.5vw, 36px) !important;
+        padding-bottom: clamp(20px, 4.5vw, 36px) !important;
+        justify-content: center !important;
+      }
 
-.hero-s_logo_a {
-  margin-top: 0.4rem !important;
-  margin-left: 1.2rem !important;
-  transform: rotate(-10deg) !important;
-  display: block !important;
-}
+      .flower {
+        z-index: 0 !important;
+        max-width: 45vw !important;
+        max-height: 45vw !important;
+        opacity: 1 !important;
+        transform: none !important;
+        isolation: auto !important;
+        pointer-events: none !important;
+      }
+      .flower.loc-info { max-width: 40vw !important; max-height: 40vw !important; top: -15px !important; left: -15px !important; }
+      .flower.loc-intro { max-width: 42vw !important; max-height: 42vw !important; bottom: -20px !important; left: -15px !important; }
+      .flower.apart-info { max-width: 42vw !important; max-height: 42vw !important; bottom: -15px !important; left: -15px !important; }
+      .flower.interior { max-width: 45vw !important; max-height: 45vw !important; }
+      .flower.other { max-width: 40vw !important; max-height: 40vw !important; right: -15px !important; }
 
-.hero-s_logo_a .a2 {
-  font-size: clamp(34px, 3vw, 50px) !important;
-  line-height: 1 !important;
-  margin-top: 0 !important;
-  margin-left: 0 !important;
-  display: block !important;
-  text-align: center !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25) !important;
-}
+      .info-s_lead, .info-s_desc, .s_title, .loc-info-s_lead,
+      .apart-info-s_title, .apart-info-s_lead, .apart-info-s_desc,
+      .loc-intro-s_title, .loc-intro-s_desc, .loc-intro-s_cap,
+      .loc-intro-s_title_t, .loc-intro-s_title_b,
+      .s_title_h1, .s_title_h2, .s_title_sub,
+      .h1, .h2, .h3, .h4, .l1, .l2, .p,
+      [data-scroll-reveal], [data-parallax="title"] {
+        position: relative !important;
+        z-index: 2 !important;
+      }
 
-/* 2b. Floating Tip Cards with Architectural Images */
-.floating-tip-card {
-  min-height: 390px !important;
-  height: auto !important;
-  aspect-ratio: auto !important;
-}
-.floating-tip-card_img {
-  position: relative !important;
-  z-index: 1 !important;
-  flex-shrink: 0 !important;
-}
+      .loc-path-s_title { text-align: center !important; padding: 0 1rem !important; }
+      .loc-path-s_title_line { font-size: clamp(2rem, 7.5vw, 3.2rem) !important; line-height: 1.15 !important; display: inline-block !important; }
+      .loc-path-s_title_a { font-size: clamp(2.4rem, 9vw, 4rem) !important; display: inline-block !important; }
 
-/* 3. Responsive Mobile Phone Optimizations (<= 991px & <= 767px) */
-@media screen and (max-width: 991px) {
-  /* Prevent horizontal scroll / clipping showing dark side background */
-  html, body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative !important;
-    background-color: #f3f3ec !important;
-  }
-  .transition-wrapper,
-  .transition-container,
-  [data-barba="wrapper"],
-  main,
-  .section,
-  .container {
-    overflow-x: clip !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
+      /* Zoom out coastline route line on phone view keeping all other elements same size */
+      .loc-path-s_path {
+        grid-column: 1 / -1 !important;
+        grid-area: 1 / 1 / 2 / -1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        overflow: visible !important;
+        padding: 0 0.5rem !important;
+        box-sizing: border-box !important;
+      }
+      .loc-path-s_path_c {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+      }
+      .loc-path-s_path_c img.img.loc-path {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        display: block !important;
+      }
+      .loc-path-s_path_c img.img.h-auto {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+      }
 
-  /* Prevent oversized images or tracks from stretching viewport */
-  .marquee_track,
-  .marquee-w {
-    overflow: hidden !important;
-    max-width: 100vw !important;
-  }
-  .loc-w_bg_img,
-  .loc-w_bg_img img {
-    max-width: 100vw !important;
-    overflow: hidden !important;
-  }
-
-  /* Reset GSAP scroll-reveal & parallax transforms on mobile so elements sit naturally in normal document flow */
-  [data-scroll-reveal],
-  [data-scroll-reveal] *,
-  [data-part],
-  [data-part] *,
-  [data-parallax],
-  [data-parallax] *,
-  [data-scrub-reveal],
-  [data-scrub-reveal] *,
-  .loc-info-s,
-  .loc-info-s *,
-  .loc-intro-s,
-  .loc-intro-s *,
-  .loc-path-s,
-  .loc-path-s *,
-  .footer-s,
-  .footer-s *,
-  .quote-s,
-  .quote-s *,
-  .hero-s,
-  .hero-s *,
-  .benefits-intro-s,
-  .benefits-intro-s *,
-  .split-line-mask,
-  .split-line,
-  .split-word-mask,
-  .split-word,
-  .split-char {
-    opacity: 1 !important;
-    transform: none !important;
-    translate: none !important;
-    visibility: visible !important;
-  }
-
-  /* Eliminate multi-viewport artificial empty space on mobile */
-  .hero-scroll-area {
-    height: 100vh !important;
-    min-height: 580px !important;
-    max-height: 844px !important;
-    position: relative !important;
-  }
-  .hero-w {
-    position: relative !important;
-    height: 100% !important;
-    min-height: 100% !important;
-  }
-  .hero-w_bg {
-    position: absolute !important;
-    inset: 0 !important;
-    height: 100% !important;
-  }
-  .hero-w_bg_master {
-    height: 100% !important;
-  }
-  .hero_themes {
-    display: none !important;
-    height: 0 !important;
-  }
-  .slow-scroll-trigger {
-    display: none !important;
-    height: 0 !important;
-  }
-
-  /* Compact spacers: Eliminate giant empty voids on mobile */
-  .u-272.b-mob,
-  .u-272 {
-    height: clamp(24px, 5vw, 40px) !important;
-  }
-  .u-160.b-mob,
-  .u-160 {
-    height: clamp(20px, 4vw, 32px) !important;
-  }
-  .u-96.b-mob,
-  .u-96 {
-    height: clamp(16px, 3vw, 24px) !important;
-  }
-  .u-64 {
-    height: clamp(14px, 2.5vw, 20px) !important;
-  }
-  .u-48.b-mob,
-  .u-48 {
-    height: clamp(12px, 2vw, 16px) !important;
-  }
-
-  /* Location section: Stack children vertically so content flows naturally */
-  .loc-scroll-area {
-    height: auto !important;
-    min-height: auto !important;
-    overflow: visible !important;
-    position: relative !important;
-    display: block !important;
-  }
-  .loc-scroll-area_screen {
-    display: block !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    height: auto !important;
-    position: relative !important;
-    overflow: visible !important;
-  }
-  .loc-scroll-area_track {
-    display: flex !important;
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    height: auto !important;
-    position: relative !important;
-    overflow: visible !important;
-  }
-  .loc-info-w,
-  .loc-intro-w,
-  .loc-path-w {
-    width: 100% !important;
-    max-width: 100vw !important;
-    height: auto !important;
-    min-height: auto !important;
-    position: relative !important;
-    overflow: visible !important;
-    display: block !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Amenities section */
-  .amen-scroll-area {
-    height: auto !important;
-    min-height: auto !important;
-    position: relative !important;
-    display: block !important;
-  }
-  .amen-scroll-area .scroll-area_screen {
-    height: auto !important;
-    min-height: 500px !important;
-    position: relative !important;
-  }
-  .amen-scroll-area .hero_themes {
-    display: none !important;
-    height: 0 !important;
-  }
-
-  /* Footer section */
-  .footer-s {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    height: auto !important;
-    min-height: auto !important;
-    padding: 48px 16px 32px !important;
-  }
-  .footer-s_s-top {
-    display: none !important;
-  }
-
-  /* Hero Section Mobile Proportions */
-  .hero-s_logo .h1 {
-    font-size: clamp(40px, 11vw, 54px) !important;
-    line-height: 0.94 !important;
-    letter-spacing: -0.01em !important;
-    text-align: center !important;
-  }
-  .hero-s_logo_a {
-    margin-top: 0.4rem !important;
-    margin-left: 0.8rem !important;
-    transform: rotate(-10deg) !important;
-    display: block !important;
-  }
-  .hero-s_logo_a .a2 {
-    font-size: clamp(32px, 8.5vw, 44px) !important;
-    line-height: 1 !important;
-    margin-top: 0 !important;
-    margin-left: 0 !important;
-    text-align: center !important;
-    display: block !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-  }
-
-  /* Flanking Title: A Place / To Return To */
-  .hero-s_title {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-    padding: 0 16px !important;
-    margin-top: 18px !important;
-    box-sizing: border-box !important;
-  }
-  .hero-s_tabs {
-    display: none !important;
-  }
-  .hero-s_title .a-left {
-    text-align: left !important;
-    font-size: 13px !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-  }
-  .hero-s_title .a-right {
-    text-align: right !important;
-    font-size: 13px !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-  }
-
-  /* Circular CTA Button (View Available Apartments) */
-  .hero-s_btn,
-  .hero-s_b .btn-circle {
-    width: 146px !important;
-    height: 146px !important;
-    margin: 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: relative !important;
-  }
-  .btn-circle_bg {
-    width: 100% !important;
-    height: 100% !important;
-    position: absolute !important;
-    inset: 0 !important;
-  }
-  .btn-circle_bg svg {
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-  }
-  .btn-circle_label {
-    position: absolute !important;
-    inset: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    padding: 12px !important;
-    box-sizing: border-box !important;
-  }
-  .btn-circle_label .l1 {
-    font-size: 10.5px !important;
-    line-height: 1.25 !important;
-    letter-spacing: 0.1em !important;
-    text-transform: uppercase !important;
-  }
-
-  /* Flower Effects & Positioning on Mobile */
-  .flower {
-    z-index: 1 !important;
-    opacity: 1 !important;
-    mix-blend-mode: multiply !important;
-    background: transparent !important;
-    background-color: transparent !important;
-    pointer-events: none !important;
-  }
-
-  /* Concept section top-left cascading bougainvillea */
-  .flower.loc-info {
-    position: absolute !important;
-    top: -15px !important;
-    left: -15px !important;
-    width: 55vw !important;
-    height: 55vw !important;
-    max-width: 240px !important;
-    max-height: 240px !important;
-    transform: none !important;
-  }
-
-  /* Hide awkward floating flower in location intro so it doesn't collide with the button */
-  .flower.loc-intro {
-    display: none !important;
-  }
-
-  .flower.apart-info {
-    position: absolute !important;
-    bottom: -15px !important;
-    left: -15px !important;
-    max-width: 42vw !important;
-    max-height: 42vw !important;
-  }
-
-  .flower.interior {
-    max-width: 45vw !important;
-    max-height: 45vw !important;
-  }
-
-  .flower.other {
-    position: absolute !important;
-    top: 0 !important;
-    right: -15px !important;
-    max-width: 42vw !important;
-    max-height: 42vw !important;
-  }
-
-  /* Concept Section Text Hierarchy & Safe Spacing */
-  .loc-info-s {
-    padding-top: 80px !important;
-    padding-bottom: 40px !important;
-    min-height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-  .loc-info-s .s_title {
-    text-align: center !important;
-    margin-bottom: 20px !important;
-  }
-  .loc-info-s .s_title .l1 {
-    font-size: 11px !important;
-    letter-spacing: 0.25em !important;
-    text-transform: uppercase !important;
-    font-weight: 700 !important;
-  }
-  .loc-info-s .info-s_lead .h4 {
-    font-size: clamp(22px, 6.2vw, 30px) !important;
-    line-height: 1.15 !important;
-    text-align: center !important;
-    margin: 0 auto 20px !important;
-    max-width: 90% !important;
-    text-transform: uppercase !important;
-  }
-  .loc-info-s .info-s_desc .p1 {
-    font-size: 13.5px !important;
-    line-height: 1.6 !important;
-    text-align: center !important;
-    max-width: 86% !important;
-    margin: 0 auto 24px !important;
-    color: #17233B !important;
-    text-align: center !important;
-  }
-  .loc-info-s .s_logo {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 auto !important;
-  }
-
-  /* Location Intro (New Golden Mile) Section */
-  .loc-intro-s {
-    padding-top: 56px !important;
-    padding-bottom: 36px !important;
-    text-align: center !important;
-  }
-  .loc-intro-s_cap .c1 {
-    font-size: 11px !important;
-    letter-spacing: 0.3em !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    margin-bottom: 12px !important;
-    display: block !important;
-  }
-  .loc-intro-s_title .h1 {
-    font-size: clamp(36px, 10vw, 50px) !important;
-    line-height: 0.95 !important;
-    text-align: center !important;
-    margin-bottom: 16px !important;
-  }
-  .loc-intro-s_title_line {
-    display: block !important;
-    text-align: center !important;
-  }
-  .loc-intro-s_img {
-    width: 92% !important;
-    max-width: 100% !important;
-    margin: 0 auto 20px !important;
-    overflow: hidden !important;
-    border-radius: 4px !important;
-  }
-  .loc-intro-s_img img {
-    width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-  .loc-intro-s_desc {
-    max-width: 88% !important;
-    margin: 0 auto 24px !important;
-    text-align: center !important;
-  }
-  .loc-intro-s_btn {
-    width: 100% !important;
-    margin: 28px auto 0 !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    grid-column: 1 / -1 !important;
-  }
-  .loc-intro-s_btn .btn-circle {
-    width: 146px !important;
-    height: 146px !important;
-    margin: 0 auto !important;
-  }
-
-  /* Full-Width Road-Like Coastal Journey Line */
-  .loc-path-w {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-  }
-  .loc-path-s {
-    height: auto !important;
-    min-height: auto !important;
-    padding: 36px 0 20px !important;
-    overflow: visible !important;
-  }
-  .loc-path-s_title {
-    text-align: center !important;
-    width: 100% !important;
-    padding: 0 16px !important;
-    margin-bottom: 24px !important;
-    box-sizing: border-box !important;
-  }
-  .loc-path-s_title_line {
-    font-size: clamp(24px, 7vw, 36px) !important;
-    line-height: 1.1 !important;
-    letter-spacing: -0.01em !important;
-    display: block !important;
-    text-align: center !important;
-    text-transform: uppercase !important;
-  }
-  .loc-path-s_title_a {
-    font-size: clamp(30px, 9vw, 44px) !important;
-    line-height: 1 !important;
-    display: block !important;
-    text-align: center !important;
-    margin-top: -0.4rem !important;
-  }
-  .loc-path-s_path {
-    grid-column: 1 / -1 !important;
-    grid-area: 1 / 1 / 2 / -1 !important;
-    width: calc(100% + 3rem) !important;
-    margin-left: -1.5rem !important;
-    max-width: none !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-  .loc-path-s_path_c {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 auto !important;
-  }
-  .loc-path-s_path_c img.img.loc-path {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important;
-    display: block !important;
-  }
-  .loc-path-s_path_c img.img.h-auto {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
-  }
-
-  /* Amenities Section Mobile Layout (Matching Reference) */
-  .amm-s_cms_tabs-w {
-    width: 100% !important;
-    margin: 0 auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-  .amm-s_cms_tabs {
-    width: 100% !important;
-    margin: 0 auto !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  .amen-tabs-cms {
-    width: 100% !important;
-  }
-  .amen-tabs-cms_list {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 14px !important;
-    width: 100% !important;
-    text-align: center !important;
-  }
-  .amen-tabs-cms_list_item {
-    width: 100% !important;
-    text-align: center !important;
-  }
-  .amen-tab {
-    width: 100% !important;
-    text-align: center !important;
-    cursor: pointer !important;
-    padding: 4px 0 !important;
-  }
-  .amen-tab .h5 {
-    font-family: 'ambroise-francois-std', serif !important;
-    font-size: clamp(22px, 6vw, 30px) !important;
-    line-height: 1.15 !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    color: #fff !important;
-    opacity: 0.55 !important;
-    transition: opacity 0.3s ease, transform 0.3s ease !important;
-  }
-  .amen-tab.is-active .h5,
-  .amen-tab:hover .h5 {
-    opacity: 1 !important;
-    transform: scale(1.02) !important;
-  }
-  .amm-s_cms_tabs_line {
-    display: none !important;
-  }
-
-  /* High-resolution rendering & optimal positioning for all mobile images */
-  img {
-    image-rendering: -webkit-optimize-contrast;
-  }
-  .hero-w_bg_master_img_day img,
-  .hero-w_bg_master_img_night img {
-    object-fit: cover !important;
-    object-position: center 38% !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-  .amen-slide_img,
-  .amen-slide_img img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-  }
-  .benefit-slide_img,
-  .benefit-slide_img img {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: cover !important;
-    object-position: center !important;
-  }
-
-  /* Guarantee all text typography stays crisp and high z-index */
-  .info-s_lead,
-  .info-s_desc,
-  .s_title,
-  .loc-info-s_lead,
-  .apart-info-s_title,
-  .apart-info-s_lead,
-  .apart-info-s_desc,
-  .loc-intro-s_title,
-  .loc-intro-s_desc,
-  .loc-intro-s_cap,
-  .loc-intro-s_title_t,
-  .loc-intro-s_title_b,
-  .s_title_h1,
-  .s_title_h2,
-  .s_title_sub,
-  .h1, .h2, .h3, .h4,
-  .l1, .l2, .p,
-  [data-scroll-reveal],
-  [data-parallax="title"] {
-    position: relative !important;
-    z-index: 2 !important;
-  }
-
-  /* Spacing improvements for apartment cards on phone view */
-  .apart-item_card {
-    margin-bottom: 2rem !important;
-  }
-}
-
-/* 4. High-definition template typography & contrast */
-::selection {
-  background: #1d252c;
-  color: #f3f3ec;
-}
-
+      .apart-item_card { margin-bottom: 2rem !important; }
+    }
   </style>
   <script id="aura-dummy-redirect-handler">
     document.addEventListener('DOMContentLoaded', function() {
@@ -950,18 +406,11 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
 }
 
 // 1. Core pages
-fs.mkdirSync('apartments', { recursive: true });
-fs.mkdirSync('contact', { recursive: true });
-fs.mkdirSync('coming-soon', { recursive: true });
-
 const corePages = [
   { src: 'extracted/pages/index.html', dest: 'index.html', type: 'home' },
   { src: 'extracted/pages/apartments.html', dest: 'apartments.html', type: 'apartments' },
-  { src: 'extracted/pages/apartments.html', dest: 'apartments/index.html', type: 'apartments' },
   { src: 'extracted/pages/contact.html', dest: 'contact.html', type: 'contact' },
-  { src: 'extracted/pages/contact.html', dest: 'contact/index.html', type: 'contact' },
-  { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon.html', type: 'coming-soon' },
-  { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon/index.html', type: 'coming-soon' }
+  { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon.html', type: 'coming-soon' }
 ];
 
 for (const p of corePages) {

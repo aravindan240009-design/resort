@@ -13,11 +13,8 @@ const slugs = [
 const input = {
   main: resolve(import.meta.dirname, 'index.html'),
   apartments: resolve(import.meta.dirname, 'apartments.html'),
-  apartments_index: resolve(import.meta.dirname, 'apartments/index.html'),
   contact: resolve(import.meta.dirname, 'contact.html'),
-  contact_index: resolve(import.meta.dirname, 'contact/index.html'),
-  comingSoon: resolve(import.meta.dirname, 'coming-soon.html'),
-  comingSoon_index: resolve(import.meta.dirname, 'coming-soon/index.html')
+  comingSoon: resolve(import.meta.dirname, 'coming-soon.html')
 };
 
 for (const slug of slugs) {
@@ -31,22 +28,10 @@ function apartmentRewritePlugin() {
   const handler = (req, res, next) => {
     const rawUrl = req.url || '';
     const pathname = rawUrl.split('?')[0];
-    const query = rawUrl.includes('?') ? rawUrl.slice(rawUrl.indexOf('?')) : '';
-    if (pathname === '/apartments' || pathname === '/apartments/') {
-      req.url = '/apartments.html' + query;
-      return next();
-    }
-    if (pathname === '/contact' || pathname === '/contact/') {
-      req.url = '/contact.html' + query;
-      return next();
-    }
-    if (pathname === '/coming-soon' || pathname === '/coming-soon/') {
-      req.url = '/coming-soon.html' + query;
-      return next();
-    }
     const match = pathname.match(/^\/apartments\/([0-9]+)\/?$/);
     if (match) {
       const slug = match[1];
+      const query = rawUrl.includes('?') ? rawUrl.slice(rawUrl.indexOf('?')) : '';
       req.url = `/apartments/${slug}/index.html` + query;
     }
     next();
