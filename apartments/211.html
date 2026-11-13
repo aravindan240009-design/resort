@@ -527,6 +527,70 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         gap: 3px !important;
         z-index: 10 !important;
       }
+
+      /* 6. Mobile Footer Layout & Negative Margin Overlap Fix */
+      .footer-w {
+        margin-top: 0 !important;
+        position: relative !important;
+        height: auto !important;
+      }
+
+      .footer-w_bg {
+        display: none !important;
+      }
+
+      .section.theme_on-dark {
+        background-color: var(--_global-colors---brand-500--velvet-plum, #340c24) !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
+      }
+
+      .section.theme_on-dark .container {
+        height: auto !important;
+        min-height: auto !important;
+      }
+
+      .footer-s {
+        height: auto !important;
+        min-height: auto !important;
+        padding-top: clamp(32px, 7vw, 48px) !important;
+        padding-bottom: clamp(28px, 6vw, 40px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 28px !important;
+      }
+
+      .footer-s_t {
+        display: none !important;
+      }
+
+      .footer-s_c {
+        flex: none !important;
+        margin-bottom: 0 !important;
+      }
+
+      .footer-s_contact {
+        margin-bottom: 12px !important;
+      }
+
+      .footer-s_contact .u-32,
+      .footer-s_contact .u-48 {
+        display: none !important;
+      }
+
+      .footer-s_b {
+        flex: none !important;
+        padding-top: 20px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+      }
+
+      .footer-s_b .u-48 {
+        display: none !important;
+      }
     }
 
     @media screen and (min-width: 992px) {
