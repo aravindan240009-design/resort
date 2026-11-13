@@ -133,30 +133,31 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
   }
 
   /* Mobile phone flower styling (<= 991px):
-     Eliminates iOS Safari video white rectangle bug, removes background,
-     and restores vibrant desktop bougainvillea pink across all sections */
+     Enables dancing bougainvillea video playback with transparent background knockout */
   .flower {
     mix-blend-mode: normal !important;
     background: transparent !important;
     background-color: transparent !important;
     isolation: auto !important;
     opacity: 1 !important;
-    transform: none !important;
     pointer-events: none !important;
   }
   .flower video {
-    display: none !important;
-  }
-  .flower .flower_mob_img {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
+    mix-blend-mode: multiply !important;
     pointer-events: none !important;
     background: transparent !important;
     background-color: transparent !important;
-    mix-blend-mode: normal !important;
     filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+  }
+  .flower .flower_mob_img {
+    display: none !important;
+  }
+  .flower.interior video {
+    mix-blend-mode: normal !important;
   }
 
   .flower.loc-info {

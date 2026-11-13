@@ -193,30 +193,31 @@ const headEnhancements = `
       }
 
       /* Mobile phone flower styling (<= 991px):
-         Eliminates iOS Safari video white rectangle bug, removes background,
-         and restores vibrant desktop bougainvillea pink across all sections */
+         Enables dancing bougainvillea video playback with transparent background knockout */
       .flower {
         mix-blend-mode: normal !important;
         background: transparent !important;
         background-color: transparent !important;
         isolation: auto !important;
         opacity: 1 !important;
-        transform: none !important;
         pointer-events: none !important;
       }
       .flower video {
-        display: none !important;
-      }
-      .flower .flower_mob_img {
         display: block !important;
         width: 100% !important;
         height: 100% !important;
         object-fit: contain !important;
+        mix-blend-mode: multiply !important;
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        mix-blend-mode: normal !important;
         filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      }
+      .flower .flower_mob_img {
+        display: none !important;
+      }
+      .flower.interior video {
+        mix-blend-mode: normal !important;
       }
 
       .flower.loc-info {
@@ -1073,6 +1074,43 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
   res = res.replace(/href="\/apartments\/([0-9]+)"/gi, 'href="/apartments/$1/"');
   // Ensure root / is clean
   res = res.replace(/href="\/"/gi, 'href="/"');
+
+  // 13. Ensure all videos have autoplay attribute for immediate dancing motion on mobile & desktop
+  res = res.replace(/<video(?![^>]*\bautoplay\b)/gi, '<video autoplay=""');
+
+  // 14. Add resilient video playback enforcer for continuous dancing bougainvillea
+  const flowerPlaybackScript = `
+<script>
+  (function() {
+    function playAllFlowerVideos() {
+      document.querySelectorAll('.flower video').forEach(function(v) {
+        v.muted = true;
+        v.playsInline = true;
+        v.loop = true;
+        v.setAttribute('autoplay', '');
+        v.setAttribute('playsinline', '');
+        v.setAttribute('webkit-playsinline', '');
+        var p = v.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(function() {});
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', playAllFlowerVideos);
+    } else {
+      playAllFlowerVideos();
+    }
+    window.addEventListener('load', playAllFlowerVideos);
+    ['touchstart', 'scroll', 'click'].forEach(function(evt) {
+      document.addEventListener(evt, playAllFlowerVideos, { once: true, passive: true });
+    });
+  })();
+</script>
+`;
+  if (!res.includes('playAllFlowerVideos')) {
+    res = res.replace('</body>', flowerPlaybackScript + '\n</body>');
+  }
 
   return res;
 }
