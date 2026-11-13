@@ -104,6 +104,13 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       transform: none !important;
     }
 
+    /* Flower interior sits on dark velvet-plum/brown background, where multiply makes it black/invisible */
+    .flower.interior,
+    .flower.interior video,
+    .flower.interior img {
+      mix-blend-mode: normal !important;
+    }
+
     /* 2. Hero Title Font Size Reduction (Clean Luxury Proportion) */
     .hero-s_logo .h1 {
       font-size: clamp(56px, 5.2vw, 82px) !important;
@@ -283,6 +290,59 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       }
       .amm-s_cms_tabs_line {
         display: none !important;
+      }
+
+      /* Fit image to brown background card and make flower fully visible on phone */
+      .interior-s_l_img-w {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: clamp(14px, 3.5vw, 20px) !important;
+        padding-right: clamp(14px, 3.5vw, 20px) !important;
+        padding-top: clamp(20px, 5vw, 28px) !important;
+        padding-bottom: clamp(20px, 5vw, 28px) !important;
+        aspect-ratio: auto !important;
+        box-sizing: border-box !important;
+        border-radius: 12px !important;
+        overflow: visible !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      .interior-s_l_img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 4/3 !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+      }
+      .interior-s_l_img .img-w {
+        width: 100% !important;
+        height: 100% !important;
+        clip-path: none !important;
+        opacity: 1 !important;
+      }
+      .interior-s_l_img img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+      }
+      .flower.interior,
+      .flower.interior video,
+      .flower.interior img {
+        mix-blend-mode: normal !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        z-index: 5 !important;
+        right: -8px !important;
+        top: -24px !important;
+        max-width: 38vw !important;
+        max-height: 38vw !important;
+        pointer-events: none !important;
       }
 
       .apart-item_card { margin-bottom: 2rem !important; }
