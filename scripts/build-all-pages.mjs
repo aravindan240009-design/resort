@@ -690,11 +690,13 @@ const headEnhancements = `
         z-index: 10 !important;
       }
 
-      /* 6. Mobile Footer Layout & Negative Margin Overlap Fix */
+      /* 6. Mobile Footer Layout & Alignment (Centered Logo & Address, Side-by-Side Bottom Credits) */
       .footer-w {
         margin-top: 0 !important;
         position: relative !important;
         height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
       }
 
       .footer-w_bg {
@@ -705,25 +707,39 @@ const headEnhancements = `
         background-color: var(--_global-colors---brand-500--velvet-plum, #340c24) !important;
         height: auto !important;
         min-height: auto !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+        padding-top: clamp(48px, 8vw, 64px) !important;
+        padding-bottom: clamp(36px, 6vw, 48px) !important;
         position: relative !important;
-        z-index: 2 !important;
+        z-index: 5 !important;
       }
 
       .section.theme_on-dark .container {
         height: auto !important;
         min-height: auto !important;
+        padding-left: clamp(16px, 4vw, 24px) !important;
+        padding-right: clamp(16px, 4vw, 24px) !important;
       }
 
       .footer-s {
         height: auto !important;
         min-height: auto !important;
-        padding-top: clamp(32px, 7vw, 48px) !important;
-        padding-bottom: clamp(28px, 6vw, 40px) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 28px !important;
+        gap: 36px !important;
+        padding: 0 !important;
+      }
+
+      .footer-s,
+      .footer-s *,
+      .footer-s [data-text],
+      .footer-s .split-char,
+      .footer-s .split-word,
+      .footer-s .split-line {
+        opacity: 1 !important;
+        visibility: visible !important;
       }
 
       .footer-s_t {
@@ -733,10 +749,43 @@ const headEnhancements = `
       .footer-s_c {
         flex: none !important;
         margin-bottom: 0 !important;
+        width: 100% !important;
+      }
+
+      .footer-s_c > .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 16px !important;
+        width: 100% !important;
       }
 
       .footer-s_contact {
-        margin-bottom: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+      }
+
+      .footer-s_contact .s_logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      .footer-s_contact .logo_symbol.ico-64 {
+        width: 48px !important;
+        height: 48px !important;
+        color: #f3f3ec !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
 
       .footer-s_contact .u-32,
@@ -744,14 +793,151 @@ const headEnhancements = `
         display: none !important;
       }
 
+      .footer-s_address {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+      }
+
+      .footer-s_address .loc-cms,
+      .footer-s_address .loc-cms_list,
+      .footer-s_address .loc-cms_list_item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+
+      .footer-s_address h3,
+      .footer-s_address .l1.reg {
+        font-family: 'Maison Neue Extended', Arial, sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        color: #f3f3ec !important;
+        text-align: center !important;
+        margin: 0 0 6px 0 !important;
+      }
+
+      .footer-s_address .nav-item {
+        display: inline-block !important;
+        text-align: center !important;
+        color: rgba(243, 243, 236, 0.9) !important;
+        font-family: 'Maison Neue Extended', Arial, sans-serif !important;
+        font-size: 10.5px !important;
+        line-height: 1.55 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        max-width: 280px !important;
+      }
+
       .footer-s_b {
         flex: none !important;
-        padding-top: 20px !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+        padding-top: 24px !important;
+        border-top: 1px solid rgba(243, 243, 236, 0.16) !important;
+        width: 100% !important;
       }
 
       .footer-s_b .u-48 {
         display: none !important;
+      }
+
+      .footer-s_b > .grid {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+        width: 100% !important;
+        gap: 16px !important;
+      }
+
+      .footer-s_info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        flex: 1 !important;
+        gap: 4px !important;
+      }
+
+      .footer-s_info .l1 {
+        font-family: 'Maison Neue Extended', Arial, sans-serif !important;
+        font-size: 9.5px !important;
+        line-height: 1.45 !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+        color: rgba(243, 243, 236, 0.85) !important;
+      }
+
+      .footer-s_info .legal-cms {
+        margin-top: 4px !important;
+      }
+
+      .footer-s_info .legal-cms_list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 3px !important;
+      }
+
+      .footer-s_info .legal-cms_list_item {
+        display: flex !important;
+        align-items: center !important;
+      }
+
+      .footer-s_info .legal-cms_list_item a,
+      .footer-s_info .legal-cms_list_item .nav-item {
+        font-family: 'Maison Neue Extended', Arial, sans-serif !important;
+        font-size: 9px !important;
+        letter-spacing: 0.06em !important;
+        text-transform: uppercase !important;
+        color: rgba(243, 243, 236, 0.65) !important;
+        text-decoration: underline !important;
+      }
+
+      .footer-s_info .legal-cms_list_item .l1[data-comma] {
+        display: none !important;
+      }
+
+      .footer-s_credits {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+        flex: none !important;
+      }
+
+      .footer-s_credits .credits {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+        gap: 3px !important;
+      }
+
+      .footer-s_credits .l1.reg {
+        font-family: 'Maison Neue Extended', Arial, sans-serif !important;
+        font-size: 9px !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        color: rgba(243, 243, 236, 0.65) !important;
+      }
+
+      .footer-s_credits .nav-item,
+      .footer-s_credits .credits_link {
+        font-family: 'Maison Neue Extended', Arial, sans-serif !important;
+        font-size: 9.5px !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        color: rgba(243, 243, 236, 0.9) !important;
+        font-weight: 600 !important;
       }
     }
 
