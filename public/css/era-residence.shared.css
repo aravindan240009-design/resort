@@ -731,6 +731,91 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
   .amen-slide_img .img-p.b-desk {
     display: none !important;
   }
+
+  /* Benefits section on mobile: remove 100vh empty void and auto-fit to content */
+  .benefits-s,
+  .benefits-w,
+  .section:has(.benefits-w) {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .benefits-s {
+    padding-top: clamp(36px, 8vw, 54px) !important;
+    padding-bottom: clamp(28px, 6vw, 40px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .benefits-s_cms {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+  .benefits-cms {
+    order: 1 !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+  .benefits-cms_list {
+    height: auto !important;
+    position: relative !important;
+  }
+  .benefits-cms_list_item {
+    height: auto !important;
+    position: relative !important;
+  }
+  .benefit-slide {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .benefit-slide_t {
+    flex: none !important;
+  }
+  .benefit-slide_c {
+    flex: none !important;
+  }
+  .benefit-slide_b {
+    flex: none !important;
+    padding-bottom: 8px !important;
+  }
+  .benefits-s_cms_pag {
+    order: 2 !important;
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    margin-top: 20px !important;
+    margin-bottom: 8px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    pointer-events: auto !important;
+    width: 100% !important;
+  }
+  .benefits-s_cms_pag .benefit-slide_img,
+  .benefits-s_cms_pag .u-48,
+  .benefits-s_cms_pag .u-16 {
+    display: none !important;
+  }
+  .benefits-s_cms_pag .pag {
+    margin: 0 auto !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .benefits-s_cms_pag .pag_prev,
+  .benefits-s_cms_pag .pag_next {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
 }
 
 @media screen and (min-width: 992px) {
