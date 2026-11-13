@@ -175,17 +175,19 @@ video {
     text-align: center !important;
   }
   .hero-s_logo_a {
-    margin-top: -0.25rem !important;
-    margin-left: 0 !important;
-    transform: none !important;
+    margin-top: 0.4rem !important;
+    margin-left: 0.8rem !important;
+    transform: rotate(-10deg) !important;
     display: block !important;
   }
   .hero-s_logo_a .a2 {
-    font-size: clamp(30px, 8.5vw, 42px) !important;
+    font-size: clamp(32px, 8.5vw, 44px) !important;
+    line-height: 1 !important;
     margin-top: 0 !important;
     margin-left: 0 !important;
     text-align: center !important;
     display: block !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
   }
 
   /* Flanking Title: A Place / To Return To */
@@ -808,12 +810,18 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
 }
 
 // 1. Core pages
+fs.mkdirSync('apartments', { recursive: true });
+fs.mkdirSync('contact', { recursive: true });
+fs.mkdirSync('coming-soon', { recursive: true });
+
 const corePages = [
   { src: 'extracted/pages/index.html', dest: 'index.html', type: 'home' },
   { src: 'extracted/pages/apartments.html', dest: 'apartments.html', type: 'apartments' },
   { src: 'extracted/pages/apartments.html', dest: 'apartments/index.html', type: 'apartments' },
   { src: 'extracted/pages/contact.html', dest: 'contact.html', type: 'contact' },
-  { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon.html', type: 'coming-soon' }
+  { src: 'extracted/pages/contact.html', dest: 'contact/index.html', type: 'contact' },
+  { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon.html', type: 'coming-soon' },
+  { src: 'extracted/pages/coming-soon.html', dest: 'coming-soon/index.html', type: 'coming-soon' }
 ];
 
 for (const p of corePages) {

@@ -15,7 +15,9 @@ const input = {
   apartments: resolve(import.meta.dirname, 'apartments.html'),
   apartments_index: resolve(import.meta.dirname, 'apartments/index.html'),
   contact: resolve(import.meta.dirname, 'contact.html'),
-  comingSoon: resolve(import.meta.dirname, 'coming-soon.html')
+  contact_index: resolve(import.meta.dirname, 'contact/index.html'),
+  comingSoon: resolve(import.meta.dirname, 'coming-soon.html'),
+  comingSoon_index: resolve(import.meta.dirname, 'coming-soon/index.html')
 };
 
 for (const slug of slugs) {
@@ -32,6 +34,14 @@ function apartmentRewritePlugin() {
     const query = rawUrl.includes('?') ? rawUrl.slice(rawUrl.indexOf('?')) : '';
     if (pathname === '/apartments' || pathname === '/apartments/') {
       req.url = '/apartments.html' + query;
+      return next();
+    }
+    if (pathname === '/contact' || pathname === '/contact/') {
+      req.url = '/contact.html' + query;
+      return next();
+    }
+    if (pathname === '/coming-soon' || pathname === '/coming-soon/') {
+      req.url = '/coming-soon.html' + query;
       return next();
     }
     const match = pathname.match(/^\/apartments\/([0-9]+)\/?$/);

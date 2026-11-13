@@ -4,6 +4,10 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/apartments", "destination": "/apartments.html" },
-    { "source": "/apartments/", "destination": "/apartments.html" }
+    { "source": "/apartments/", "destination": "/apartments.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/contact/", "destination": "/contact.html" },
+    { "source": "/coming-soon", "destination": "/coming-soon.html" },
+    { "source": "/coming-soon/", "destination": "/coming-soon.html" }
   ]
 }
