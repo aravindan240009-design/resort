@@ -50,26 +50,37 @@ const headEnhancements = `
     }
   </style>
   <style id="aura-template-enhancements">
-    /* 1. Flower Background Fix: 100% transparent knockout of poster & video white boxes */
+    /* 1. Flower Background & Color Fix: 100% transparent cutouts & rich desktop bougainvillea vibrancy */
     .flower,
-    .flower video,
-    .flower img,
-    .flower svg,
+    .flower .flower_mob_img,
     .loc-path-w_flower .flower {
-      mix-blend-mode: multiply !important;
       background: transparent !important;
       background-color: transparent !important;
       pointer-events: none !important;
       isolation: auto !important;
       opacity: 1 !important;
-      transform: none !important;
     }
 
-    /* Flower interior sits on dark velvet-plum/brown background, where multiply makes it black/invisible */
-    .flower.interior,
-    .flower.interior video,
-    .flower.interior img {
-      mix-blend-mode: normal !important;
+    .flower video,
+    .flower img,
+    .flower .flower_mob_img {
+      filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      object-fit: contain !important;
+      opacity: 1 !important;
+    }
+
+    /* Desktop flower styling (>= 992px) */
+    @media screen and (min-width: 992px) {
+      .flower .flower_mob_img {
+        display: none !important;
+      }
+      .flower video {
+        display: block !important;
+        mix-blend-mode: multiply !important;
+      }
+      .flower.interior video {
+        mix-blend-mode: normal !important;
+      }
     }
 
     /* 2. Hero Title Font Size Reduction (Clean Luxury Proportion) */
@@ -116,7 +127,6 @@ const headEnhancements = `
       .u-32.b-mob, .u-32 { height: clamp(8px, 1.8vw, 14px) !important; }
 
       /* Reduce empty viewport voids on mobile sections */
-      .apart-info-s,
       .loc-info-s,
       .loc-intro-s,
       .quote-s,
@@ -128,20 +138,80 @@ const headEnhancements = `
         justify-content: center !important;
       }
 
+      /* Luxury apartment intro section with proper breathing room on mobile */
+      .apart-info-s {
+        min-height: 90vh !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding-top: clamp(24px, 5vw, 40px) !important;
+        padding-bottom: clamp(40px, 8vw, 60px) !important;
+        position: relative !important;
+      }
+
+      /* Mobile phone flower styling (<= 991px):
+         Eliminates iOS Safari video white rectangle bug, removes background,
+         and restores vibrant desktop bougainvillea pink across all sections */
       .flower {
-        z-index: 0 !important;
-        max-width: 45vw !important;
-        max-height: 45vw !important;
+        mix-blend-mode: normal !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        isolation: auto !important;
         opacity: 1 !important;
         transform: none !important;
-        isolation: auto !important;
         pointer-events: none !important;
       }
-      .flower.loc-info { max-width: 40vw !important; max-height: 40vw !important; top: -15px !important; left: -15px !important; }
-      .flower.loc-intro { max-width: 42vw !important; max-height: 42vw !important; bottom: -20px !important; left: -15px !important; }
-      .flower.apart-info { max-width: 42vw !important; max-height: 42vw !important; bottom: -15px !important; left: -15px !important; }
-      .flower.interior { max-width: 45vw !important; max-height: 45vw !important; }
-      .flower.other { max-width: 40vw !important; max-height: 40vw !important; right: -15px !important; }
+      .flower video {
+        display: none !important;
+      }
+      .flower .flower_mob_img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        pointer-events: none !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        mix-blend-mode: normal !important;
+        filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      }
+
+      .flower.loc-info {
+        max-width: 44vw !important;
+        max-height: 44vw !important;
+        top: -12px !important;
+        left: -15px !important;
+        z-index: 2 !important;
+      }
+      .flower.loc-intro {
+        max-width: 44vw !important;
+        max-height: 44vw !important;
+        bottom: -15px !important;
+        left: -20px !important;
+        z-index: 1 !important;
+      }
+      .flower.apart-info {
+        max-width: 32vw !important;
+        max-height: 32vw !important;
+        bottom: -10px !important;
+        left: -15px !important;
+        z-index: 1 !important;
+      }
+      .flower.interior {
+        max-width: 38vw !important;
+        max-height: 38vw !important;
+        top: -24px !important;
+        right: -8px !important;
+        z-index: 5 !important;
+      }
+      .flower.other {
+        max-width: 44vw !important;
+        max-height: 44vw !important;
+        top: -10px !important;
+        right: -15px !important;
+        z-index: 2 !important;
+      }
 
       .info-s_lead, .info-s_desc, .s_title, .loc-info-s_lead,
       .apart-info-s_title, .apart-info-s_lead, .apart-info-s_desc,
@@ -398,6 +468,17 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
       res = res.split(url).join(local);
     }
   }
+
+  // 8b. Add high-definition transparent mobile image to each .flower container (replaces video on phone)
+  res = res.replace(/(<div[^>]*class="[^"]*flower[^"]*"[^>]*>)([\s\S]*?)(<\/div>)/gi, (match, openTag, inner, closeTag) => {
+    const posterMatch = inner.match(/poster="([^"]+)"/i);
+    if (posterMatch && !inner.includes('flower_mob_img')) {
+      const posterUrl = posterMatch[1];
+      const imgTag = `<img src="${posterUrl}" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" />`;
+      return `${openTag}${inner}${imgTag}${closeTag}`;
+    }
+    return match;
+  });
 
   // 9. Rebrand circular rotating badge SVG to [YOUR BRAND] • RESIDENCES
   res = res.replace(/<div class="header-logo_bg b-desk w-embed">[\s\S]*?<\/div>/gi, deskBadge);

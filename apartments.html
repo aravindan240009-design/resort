@@ -110,26 +110,37 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     }
   </style>
   <style id="aura-template-enhancements">
-    /* 1. Flower Background Fix: 100% transparent knockout of poster & video white boxes */
+    /* 1. Flower Background & Color Fix: 100% transparent cutouts & rich desktop bougainvillea vibrancy */
     .flower,
-    .flower video,
-    .flower img,
-    .flower svg,
+    .flower .flower_mob_img,
     .loc-path-w_flower .flower {
-      mix-blend-mode: multiply !important;
       background: transparent !important;
       background-color: transparent !important;
       pointer-events: none !important;
       isolation: auto !important;
       opacity: 1 !important;
-      transform: none !important;
     }
 
-    /* Flower interior sits on dark velvet-plum/brown background, where multiply makes it black/invisible */
-    .flower.interior,
-    .flower.interior video,
-    .flower.interior img {
-      mix-blend-mode: normal !important;
+    .flower video,
+    .flower img,
+    .flower .flower_mob_img {
+      filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      object-fit: contain !important;
+      opacity: 1 !important;
+    }
+
+    /* Desktop flower styling (>= 992px) */
+    @media screen and (min-width: 992px) {
+      .flower .flower_mob_img {
+        display: none !important;
+      }
+      .flower video {
+        display: block !important;
+        mix-blend-mode: multiply !important;
+      }
+      .flower.interior video {
+        mix-blend-mode: normal !important;
+      }
     }
 
     /* 2. Hero Title Font Size Reduction (Clean Luxury Proportion) */
@@ -176,7 +187,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       .u-32.b-mob, .u-32 { height: clamp(8px, 1.8vw, 14px) !important; }
 
       /* Reduce empty viewport voids on mobile sections */
-      .apart-info-s,
       .loc-info-s,
       .loc-intro-s,
       .quote-s,
@@ -188,20 +198,80 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         justify-content: center !important;
       }
 
+      /* Luxury apartment intro section with proper breathing room on mobile */
+      .apart-info-s {
+        min-height: 90vh !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding-top: clamp(24px, 5vw, 40px) !important;
+        padding-bottom: clamp(40px, 8vw, 60px) !important;
+        position: relative !important;
+      }
+
+      /* Mobile phone flower styling (<= 991px):
+         Eliminates iOS Safari video white rectangle bug, removes background,
+         and restores vibrant desktop bougainvillea pink across all sections */
       .flower {
-        z-index: 0 !important;
-        max-width: 45vw !important;
-        max-height: 45vw !important;
+        mix-blend-mode: normal !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        isolation: auto !important;
         opacity: 1 !important;
         transform: none !important;
-        isolation: auto !important;
         pointer-events: none !important;
       }
-      .flower.loc-info { max-width: 40vw !important; max-height: 40vw !important; top: -15px !important; left: -15px !important; }
-      .flower.loc-intro { max-width: 42vw !important; max-height: 42vw !important; bottom: -20px !important; left: -15px !important; }
-      .flower.apart-info { max-width: 42vw !important; max-height: 42vw !important; bottom: -15px !important; left: -15px !important; }
-      .flower.interior { max-width: 45vw !important; max-height: 45vw !important; }
-      .flower.other { max-width: 40vw !important; max-height: 40vw !important; right: -15px !important; }
+      .flower video {
+        display: none !important;
+      }
+      .flower .flower_mob_img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        pointer-events: none !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        mix-blend-mode: normal !important;
+        filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      }
+
+      .flower.loc-info {
+        max-width: 44vw !important;
+        max-height: 44vw !important;
+        top: -12px !important;
+        left: -15px !important;
+        z-index: 2 !important;
+      }
+      .flower.loc-intro {
+        max-width: 44vw !important;
+        max-height: 44vw !important;
+        bottom: -15px !important;
+        left: -20px !important;
+        z-index: 1 !important;
+      }
+      .flower.apart-info {
+        max-width: 32vw !important;
+        max-height: 32vw !important;
+        bottom: -10px !important;
+        left: -15px !important;
+        z-index: 1 !important;
+      }
+      .flower.interior {
+        max-width: 38vw !important;
+        max-height: 38vw !important;
+        top: -24px !important;
+        right: -8px !important;
+        z-index: 5 !important;
+      }
+      .flower.other {
+        max-width: 44vw !important;
+        max-height: 44vw !important;
+        top: -10px !important;
+        right: -15px !important;
+        z-index: 2 !important;
+      }
 
       .info-s_lead, .info-s_desc, .s_title, .loc-info-s_lead,
       .apart-info-s_title, .apart-info-s_lead, .apart-info-s_desc,
@@ -6000,7 +6070,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     stroke="currentColor"
     vector-effect="non-scaling-stroke"
   />
-</svg></div></div></div><div class="grid _9-columns"><div class="apart-s_cms_empty_info"><div class="apart-s_cms_empty_title"><div class="c1 a-center">nothing found</div></div><div class="u-24"></div><div class="p1 a-center">We didn&#x27;t find anything for your request. Please, try changing your search settings</div></div></div></div><div class="u-16"></div></div></div><div class="u-160"></div></div><div data-video-playpause="" data-parallax="ctn-down" class="flower apart"><video muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/6a4afbe9a4873ec6185f295d_bougainvillea-flowers_05.avif" class="video"><source src="/assets/videos/bougainvillea-flowers_05.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_05.mov" type="video/mp4"/></video></div><div class="apart_themes"><div class="themes_row"><div data-bg="light" class="apart_themes_light-1"></div><div data-bg="color" class="apart_themes_color-1"></div></div><div data-bg="light" class="apart_themes_light-2"></div></div></div></div></section><section data-bg="color" class="section theme_on-color"><div data-footer-clip="" class="container"><div class="cta-w"><div class="cta-s"><div class="u-48"></div><div class="grid"><div class="cta-s_desc"><p data-scroll-reveal="p" class="l1 a-center">A short conversation is enough to understand which apartment fits your use case — whether it is a family second home, a longer stay, or a place to return to year after year.</p></div></div><div class="u-272"></div><div class="grid"><div class="cta-s_title"><h2 data-scroll-reveal="h" class="h1 a-center">Perfect <br/>sea views</h2><div class="u-32"></div><h3 data-scroll-reveal="h" class="c1 a-center">From rooftop terraces</h3><div class="u-160"></div><div data-scroll-reveal="ctn" class="cta-s_title_btn"><div hover-btn-circle="" data-magnetic-btn="" hover-nav-item-trigger="" class="btn-circle"><div data-magnetic-inner="" class="btn-circle_label"><a hover-nav-item="" aria-label="View available apartments" href="/apartments/" aria-current="page" class="nav-item w-inline-block w--current"><div class="nav-item_label"><div class="nav-item_label_text"><div hover="text" class="l1">View available apartments</div></div><div class="nav-item_label_text is-2"><div hover="text" class="l1">View available apartments</div></div></div></a></div><div class="btn-circle_bg w-embed"><svg data-circle viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+</svg></div></div></div><div class="grid _9-columns"><div class="apart-s_cms_empty_info"><div class="apart-s_cms_empty_title"><div class="c1 a-center">nothing found</div></div><div class="u-24"></div><div class="p1 a-center">We didn&#x27;t find anything for your request. Please, try changing your search settings</div></div></div></div><div class="u-16"></div></div></div><div class="u-160"></div></div><div data-video-playpause="" data-parallax="ctn-down" class="flower apart"><video muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/6a4afbe9a4873ec6185f295d_bougainvillea-flowers_05.avif" class="video"><source src="/assets/videos/bougainvillea-flowers_05.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_05.mov" type="video/mp4"/></video><img src="/assets/images/6a4afbe9a4873ec6185f295d_bougainvillea-flowers_05.avif" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div><div class="apart_themes"><div class="themes_row"><div data-bg="light" class="apart_themes_light-1"></div><div data-bg="color" class="apart_themes_color-1"></div></div><div data-bg="light" class="apart_themes_light-2"></div></div></div></div></section><section data-bg="color" class="section theme_on-color"><div data-footer-clip="" class="container"><div class="cta-w"><div class="cta-s"><div class="u-48"></div><div class="grid"><div class="cta-s_desc"><p data-scroll-reveal="p" class="l1 a-center">A short conversation is enough to understand which apartment fits your use case — whether it is a family second home, a longer stay, or a place to return to year after year.</p></div></div><div class="u-272"></div><div class="grid"><div class="cta-s_title"><h2 data-scroll-reveal="h" class="h1 a-center">Perfect <br/>sea views</h2><div class="u-32"></div><h3 data-scroll-reveal="h" class="c1 a-center">From rooftop terraces</h3><div class="u-160"></div><div data-scroll-reveal="ctn" class="cta-s_title_btn"><div hover-btn-circle="" data-magnetic-btn="" hover-nav-item-trigger="" class="btn-circle"><div data-magnetic-inner="" class="btn-circle_label"><a hover-nav-item="" aria-label="View available apartments" href="/apartments/" aria-current="page" class="nav-item w-inline-block w--current"><div class="nav-item_label"><div class="nav-item_label_text"><div hover="text" class="l1">View available apartments</div></div><div class="nav-item_label_text is-2"><div hover="text" class="l1">View available apartments</div></div></div></a></div><div class="btn-circle_bg w-embed"><svg data-circle viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(-150 104 104)" />
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(30 104 104)" />
 
