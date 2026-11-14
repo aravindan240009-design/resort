@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-all-pages.mjs && vite build",
+    "build": "node scripts/build-all-pages.mjs && vite build && node scripts/postbuild.mjs",
     "preview": "vite preview",
     "start": "vite preview",
     "test:styles": "node scripts/assert-styles.mjs",

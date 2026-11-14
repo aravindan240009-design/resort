@@ -13,6 +13,7 @@ const slugs = [
 const input = {
   main: resolve(import.meta.dirname, 'index.html'),
   apartments: resolve(import.meta.dirname, 'apartments.html'),
+  apartmentsIndex: resolve(import.meta.dirname, 'apartments/index.html'),
   contact: resolve(import.meta.dirname, 'contact.html'),
   comingSoon: resolve(import.meta.dirname, 'coming-soon.html')
 };
@@ -28,11 +29,18 @@ function apartmentRewritePlugin() {
   const handler = (req, res, next) => {
     const rawUrl = req.url || '';
     const pathname = rawUrl.split('?')[0];
+    const query = rawUrl.includes('?') ? rawUrl.slice(rawUrl.indexOf('?')) : '';
+
+    if (pathname === '/apartments' || pathname === '/apartments/') {
+      req.url = '/apartments.html' + query;
+      return next();
+    }
+
     const match = pathname.match(/^\/apartments\/([0-9]+)\/?$/);
     if (match) {
       const slug = match[1];
-      const query = rawUrl.includes('?') ? rawUrl.slice(rawUrl.indexOf('?')) : '';
       req.url = `/apartments/${slug}/index.html` + query;
+      return next();
     }
     next();
   };

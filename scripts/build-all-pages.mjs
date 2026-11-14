@@ -50,6 +50,26 @@ const headEnhancements = `
     }
   </style>
   <style id="aura-template-enhancements">
+    /* 0. Global Mobile Overflow Prevention & Viewport Safety:
+       Eliminates side white space / void on phone view & prevents layout horizontal shift */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      position: relative !important;
+    }
+    .page-w,
+    .hero-scroll-area,
+    .hero-w,
+    .section,
+    .marquee,
+    .marquee_track,
+    [data-barba="wrapper"],
+    [data-barba="container"] {
+      max-width: 100vw !important;
+      overflow-x: clip !important;
+    }
+
     /* 1. Flower Background & Color Fix: 100% transparent cutouts & rich desktop bougainvillea vibrancy */
     .flower,
     .flower .flower_mob_img,
@@ -132,6 +152,32 @@ const headEnhancements = `
 
     /* 3. Responsive Mobile Phone Optimizations (<= 991px & <= 767px) */
     @media screen and (max-width: 991px) {
+      /* Header Navigation & Mobile Menu Right Padding / Safe Inset:
+         Prevents MENU text and 3-dots icon from being clipped against screen edge */
+      .header-nav {
+        right: clamp(16px, 4.5vw, 24px) !important;
+        top: clamp(16px, 4.5vw, 24px) !important;
+        width: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        pointer-events: auto !important;
+        z-index: 1000 !important;
+      }
+      .header-nav_list.f-mob {
+        width: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+      }
+      .btn-menu {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+      }
+
       .hero-s_logo .h1 {
         font-size: clamp(34px, 8.5vw, 48px) !important;
         line-height: 1.05 !important;
@@ -1361,6 +1407,11 @@ for (const p of corePages) {
   const raw = fs.readFileSync(p.src, 'utf8');
   const transformed = cleanAndTransformHtml(raw, p.type);
   fs.writeFileSync(p.dest, transformed, 'utf8');
+  if (p.dest === 'apartments.html') {
+    fs.mkdirSync('apartments', { recursive: true });
+    fs.writeFileSync(path.join('apartments', 'index.html'), transformed, 'utf8');
+    console.log(`Generated directory index: apartments/index.html (${transformed.length} bytes)`);
+  }
   console.log(`Generated core page: ${p.dest} (${transformed.length} bytes)`);
 }
 
