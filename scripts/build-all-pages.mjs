@@ -1340,6 +1340,12 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
         }
       }
     }
+
+    // 10j. Replace Gated Community desktop image with the new 4K luxury architectural photograph
+    res = res.replace(
+      /<img data-parallax="img-in"[^>]*src="[^"]*era-residence-gated-community[^"]*"[^>]*class="img-p b-desk"\/>/gi,
+      '<img data-parallax="img-in" loading="eager" alt="Gated community luxury residence" src="/assets/images/luxury_gated_community_residence_desktop_4k.jpg" sizes="100vw" class="img-p b-desk"/>'
+    );
   }
 
   // 11. Add font preloads, enhancements, and dummy redirect handler in <head>
