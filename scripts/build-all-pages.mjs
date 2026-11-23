@@ -152,8 +152,7 @@ const headEnhancements = `
 
     /* 3. Responsive Mobile Phone Optimizations (<= 991px & <= 767px) */
     @media screen and (max-width: 991px) {
-      /* Header Navigation & Mobile Menu Right Padding / Safe Inset:
-         Prevents MENU text and 3-dots icon from being clipped against screen edge */
+      /* Header Navigation & Mobile Menu Touch Ergonomics (Inspired by macmillan.studio) */
       .header-nav {
         right: clamp(16px, 4.5vw, 24px) !important;
         top: clamp(16px, 4.5vw, 24px) !important;
@@ -162,7 +161,10 @@ const headEnhancements = `
         align-items: center !important;
         justify-content: flex-end !important;
         pointer-events: auto !important;
-        z-index: 1000 !important;
+        z-index: 10001 !important;
+      }
+      .header-logo {
+        z-index: 10001 !important;
       }
       .header-nav_list.f-mob {
         width: auto !important;
@@ -173,9 +175,67 @@ const headEnhancements = `
       .btn-menu {
         display: inline-flex !important;
         align-items: center !important;
+        justify-content: center !important;
         gap: 6px !important;
         margin-right: 0 !important;
-        padding-right: 0 !important;
+        padding: 8px 12px !important;
+        min-height: 44px !important;
+        min-width: 44px !important;
+        box-sizing: border-box !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      .btn-menu .nav-item {
+        min-height: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 4px 6px !important;
+      }
+      .btn-menu .ico-24 {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 24px !important;
+        height: 24px !important;
+      }
+
+      /* Strict Mobile Overflow Containment:
+         Eliminates horizontal wobble, sideways pull & scrollbar creep on mobile */
+      .hero-w,
+      .hero-w_bg,
+      .hero-w_bg_master,
+      .hero-w_bg_master_img,
+      .hero-w_bg_master_img_day,
+      .hero-w_bg_master_img_night,
+      .hero-scroll-area,
+      .loc-w,
+      .loc-w_clouds,
+      .marquee,
+      .marquee_track {
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Contact map overflow fix */
+      .contact-s_map {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+      .contact-s_map_c {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+      .contact-s_map img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
       }
 
       .hero-s_logo .h1 {
@@ -301,9 +361,8 @@ const headEnhancements = `
       }
 
       /* Mobile phone flower styling (<= 991px):
-         Enables dancing bougainvillea video playback with transparent background knockout */
+         100% transparent cutouts, zero background box, vibrant pink bougainvillea, and balanced breathing room */
       .flower {
-        mix-blend-mode: normal !important;
         background: transparent !important;
         background-color: transparent !important;
         isolation: auto !important;
@@ -315,53 +374,87 @@ const headEnhancements = `
         width: 100% !important;
         height: 100% !important;
         object-fit: contain !important;
-        mix-blend-mode: multiply !important;
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+        filter: saturate(1.4) contrast(1.08) brightness(1.04) !important;
       }
-      .flower .flower_mob_img {
-        display: none !important;
-      }
-      .flower.interior video {
-        mix-blend-mode: normal !important;
+      .flower .flower_mob_img,
+      .flower img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        pointer-events: none !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        filter: saturate(1.4) contrast(1.08) brightness(1.04) !important;
       }
 
       .flower.loc-info {
-        max-width: 44vw !important;
-        max-height: 44vw !important;
-        top: -12px !important;
-        left: -15px !important;
+        max-width: clamp(130px, 34vw, 175px) !important;
+        max-height: clamp(130px, 34vw, 175px) !important;
+        top: clamp(8px, 2.5vw, 16px) !important;
+        left: clamp(8px, 2.5vw, 16px) !important;
         z-index: 2 !important;
       }
+
       .flower.loc-intro {
-        max-width: 44vw !important;
-        max-height: 44vw !important;
-        bottom: -15px !important;
-        left: -20px !important;
+        max-width: clamp(130px, 34vw, 175px) !important;
+        max-height: clamp(130px, 34vw, 175px) !important;
+        bottom: clamp(12px, 3vw, 24px) !important;
+        left: clamp(10px, 3vw, 20px) !important;
         z-index: 1 !important;
       }
+
+      /* Location Intro & Route spacing: generous padding & margins around circular button */
+      .loc-intro-s {
+        padding-top: clamp(32px, 6vw, 48px) !important;
+        padding-bottom: clamp(56px, 11vw, 84px) !important;
+        position: relative !important;
+      }
+
+      .loc-intro-s_btn {
+        margin-top: clamp(24px, 5vw, 40px) !important;
+        margin-bottom: clamp(24px, 5vw, 40px) !important;
+        position: relative !important;
+        z-index: 2 !important;
+      }
+
+      .loc-path-s_t > .u-160 {
+        height: clamp(64px, 14vw, 96px) !important;
+      }
+
       .flower.apart-info {
-        max-width: 32vw !important;
-        max-height: 32vw !important;
-        bottom: -10px !important;
-        left: -15px !important;
+        max-width: clamp(110px, 28vw, 150px) !important;
+        max-height: clamp(110px, 28vw, 150px) !important;
+        bottom: clamp(8px, 2vw, 16px) !important;
+        left: clamp(8px, 2vw, 16px) !important;
         z-index: 1 !important;
       }
+
       .flower.interior {
-        max-width: 38vw !important;
-        max-height: 38vw !important;
-        top: -24px !important;
-        right: -8px !important;
+        max-width: clamp(130px, 32vw, 170px) !important;
+        max-height: clamp(130px, 32vw, 170px) !important;
+        top: clamp(8px, 2vw, 16px) !important;
+        right: clamp(8px, 2vw, 16px) !important;
         z-index: 5 !important;
       }
+
       .flower.other {
-        max-width: 44vw !important;
-        max-height: 44vw !important;
-        top: -10px !important;
-        right: -15px !important;
+        max-width: clamp(130px, 34vw, 175px) !important;
+        max-height: clamp(130px, 34vw, 175px) !important;
+        top: clamp(8px, 2vw, 16px) !important;
+        right: clamp(8px, 2vw, 16px) !important;
         z-index: 2 !important;
+      }
+      .flower.apart {
+        max-width: 30vw !important;
+        max-height: 30vw !important;
+        right: 0 !important;
+        top: 10px !important;
+        z-index: 2 !important;
+        overflow: hidden !important;
       }
 
       .info-s_lead, .info-s_desc, .s_title, .loc-info-s_lead,
@@ -908,8 +1001,15 @@ const headEnhancements = `
       .footer-s_b {
         flex: none !important;
         padding-top: 24px !important;
+        padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
         border-top: 1px solid rgba(243, 243, 236, 0.16) !important;
         width: 100% !important;
+      }
+
+      /* iPhone Home Indicator & Safe Area padding */
+      .modal_menu,
+      .modal_cta_c {
+        padding-bottom: max(24px, env(safe-area-inset-bottom, 24px)) !important;
       }
 
       .footer-s_b .u-48 {
@@ -919,10 +1019,12 @@ const headEnhancements = `
       .footer-s_b > .grid {
         display: flex !important;
         flex-direction: row !important;
+        flex-wrap: wrap !important;
         justify-content: space-between !important;
-        align-items: flex-end !important;
+        align-items: center !important;
         width: 100% !important;
-        gap: 16px !important;
+        gap: 12px !important;
+        box-sizing: border-box !important;
       }
 
       .footer-s_info {
@@ -930,7 +1032,9 @@ const headEnhancements = `
         flex-direction: column !important;
         align-items: flex-start !important;
         text-align: left !important;
-        flex: 1 !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
         gap: 4px !important;
       }
 
@@ -952,7 +1056,9 @@ const headEnhancements = `
         flex-direction: column !important;
         align-items: flex-end !important;
         text-align: right !important;
-        flex: none !important;
+        flex: 0 0 auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
       }
 
       .footer-s_credits .credits {
