@@ -1418,6 +1418,16 @@ for (const p of corePages) {
     fs.writeFileSync(path.join('apartments', 'index.html'), transformed, 'utf8');
     console.log(`Generated directory index: apartments/index.html (${transformed.length} bytes)`);
   }
+  if (p.dest === 'contact.html') {
+    fs.mkdirSync('contact', { recursive: true });
+    fs.writeFileSync(path.join('contact', 'index.html'), transformed, 'utf8');
+    console.log(`Generated directory index: contact/index.html (${transformed.length} bytes)`);
+  }
+  if (p.dest === 'coming-soon.html') {
+    fs.mkdirSync('coming-soon', { recursive: true });
+    fs.writeFileSync(path.join('coming-soon', 'index.html'), transformed, 'utf8');
+    console.log(`Generated directory index: coming-soon/index.html (${transformed.length} bytes)`);
+  }
   console.log(`Generated core page: ${p.dest} (${transformed.length} bytes)`);
 }
 

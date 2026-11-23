@@ -18,6 +18,13 @@ const input = {
   comingSoon: resolve(import.meta.dirname, 'coming-soon.html')
 };
 
+if (fs.existsSync(resolve(import.meta.dirname, 'contact/index.html'))) {
+  input.contactIndex = resolve(import.meta.dirname, 'contact/index.html');
+}
+if (fs.existsSync(resolve(import.meta.dirname, 'coming-soon/index.html'))) {
+  input.comingSoonIndex = resolve(import.meta.dirname, 'coming-soon/index.html');
+}
+
 for (const slug of slugs) {
   const p = resolve(import.meta.dirname, `apartments/${slug}/index.html`);
   if (fs.existsSync(p)) {
@@ -33,6 +40,14 @@ function apartmentRewritePlugin() {
 
     if (pathname === '/apartments' || pathname === '/apartments/') {
       req.url = '/apartments.html' + query;
+      return next();
+    }
+    if (pathname === '/contact' || pathname === '/contact/') {
+      req.url = '/contact.html' + query;
+      return next();
+    }
+    if (pathname === '/coming-soon' || pathname === '/coming-soon/') {
+      req.url = '/coming-soon.html' + query;
       return next();
     }
 
@@ -72,6 +87,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    emptyOutDir: false,
     rollupOptions: {
       input
     }
