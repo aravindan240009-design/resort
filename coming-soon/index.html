@@ -1254,28 +1254,134 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       }
     }
 
-    /* Luxury Color & Spacing Harmonization */
+    /* ==========================================================================
+       IMPERIAL MIDNIGHT GOLD & ALABASTER LUXURY THEME
+       ========================================================================== */
     :root {
-      --_global-colors---brand-500--powder-sky: #e2d5c5 !important;
-      --luxury-champagne: #e2d5c5;
-      --luxury-plum: #340c24;
-      --luxury-cream: #f3f3ec;
-      --luxury-midnight: #17233b;
+      --_global-colors---brand-500--velvet-plum: #0b121e !important;
+      --_global-colors---brand-500--powder-sky: #c8a97e !important;
+      --_global-colors---brand-500--blush-bloom: #dfc39e !important;
+      --_global-colors---base-0--100: #f7f6f2 !important;
+      --_global-colors---base-1000--100: #17233b !important;
+      --_colors---additional--success: #c8a97e !important;
+
+      --luxury-midnight-obsidian: #0b121e;
+      --luxury-midnight-card: #101a29;
+      --luxury-gold-primary: #c8a97e;
+      --luxury-gold-shimmer: #dfc39e;
+      --luxury-alabaster-silk: #f7f6f2;
     }
 
-    .theme_on-brand {
-      --_colors---other--bg: #e2d5c5 !important;
-      background-color: #e2d5c5 !important;
-    }
-
-    .theme_on-brand .s_title .l1,
-    .theme_on-brand .info-s_lead .h4,
-    .theme_on-brand .info-s_desc .p1 {
+    body {
+      background-color: #f7f6f2 !important;
       color: #17233b !important;
     }
 
     .section {
       transition: background-color 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .theme_on-dark,
+    [data-bg="dark"],
+    .footer-w,
+    .modal.menu {
+      --_colors---other--bg: #0b121e !important;
+      background-color: #0b121e !important;
+      color: #f7f6f2 !important;
+    }
+
+    .theme_on-dark .h1, .theme_on-dark .h2, .theme_on-dark .h3,
+    .theme_on-dark .h4, .theme_on-dark .h5, .theme_on-dark .h6,
+    .theme_on-dark .l1, .theme_on-dark .p1, .theme_on-dark .p2 {
+      color: #f7f6f2 !important;
+    }
+
+    .theme_on-dark .a1, .theme_on-dark .a2 {
+      color: #c8a97e !important;
+    }
+
+    .theme_on-color,
+    [data-bg="color"],
+    .section.theme_on-color,
+    .cta-w,
+    .amen-w {
+      --_colors---other--bg: #0b121e !important;
+      background-color: #0b121e !important;
+      color: #f7f6f2 !important;
+    }
+
+    .theme_on-color .h1, .theme_on-color .h2, .theme_on-color .h3,
+    .theme_on-color .h4, .theme_on-color .h5, .theme_on-color .h6 {
+      color: #f7f6f2 !important;
+    }
+
+    .theme_on-color .c1, .theme_on-color .a2, .theme_on-color .a1 {
+      color: #c8a97e !important;
+    }
+
+    .theme_on-brand,
+    .section.theme_on-brand,
+    .section.arch.clip.theme_on-brand {
+      --_colors---other--bg: #101a29 !important;
+      background-color: #101a29 !important;
+      color: #f7f6f2 !important;
+    }
+
+    .theme_on-brand .h1, .theme_on-brand .h2, .theme_on-brand .h3,
+    .theme_on-brand .h4, .theme_on-brand .h5,
+    .theme_on-brand .s_title .l1,
+    .theme_on-brand .info-s_lead .h4,
+    .theme_on-brand .info-s_desc .p1 {
+      color: #f7f6f2 !important;
+    }
+
+    .theme_on-brand .c1, .theme_on-brand .a2, .theme_on-brand .s_title {
+      color: #c8a97e !important;
+    }
+
+    .theme_on-light,
+    [data-bg="light"],
+    .section.theme_on-light {
+      --_colors---other--bg: #f7f6f2 !important;
+      background-color: #f7f6f2 !important;
+      color: #17233b !important;
+    }
+
+    .sloop-script-three,
+    .hero-s_logo_a .a2,
+    .a1, .a2 {
+      color: #c8a97e !important;
+    }
+
+    .btn-circle_bg svg circle[data-arc] {
+      stroke: #c8a97e !important;
+    }
+    .btn-circle_bg svg circle:not([data-arc]) {
+      stroke: rgba(200, 169, 126, 0.4) !important;
+    }
+    .btn-circle:hover .btn-circle_bg {
+      filter: drop-shadow(0 0 12px rgba(200, 169, 126, 0.5)) !important;
+    }
+
+    .divider .line-v, .line-v, .red-line {
+      background-color: #c8a97e !important;
+    }
+
+    .header-logo {
+      color: #c8a97e !important;
+    }
+
+    .s-bar_fill {
+      background-color: #c8a97e !important;
+    }
+
+    .nav-item:hover, .nav-item.w--current {
+      color: #c8a97e !important;
+    }
+
+    .preloader_progress_track,
+    .preloader_progress_fill {
+      background-color: #c8a97e !important;
     }
 
     .img-w img,
