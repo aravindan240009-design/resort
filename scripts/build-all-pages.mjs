@@ -84,7 +84,7 @@ const headEnhancements = `
     .flower video,
     .flower img,
     .flower .flower_mob_img {
-      filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      filter: none !important;
       object-fit: contain !important;
       opacity: 1 !important;
     }
@@ -370,14 +370,10 @@ const headEnhancements = `
         pointer-events: none !important;
       }
       .flower video {
-        display: block !important;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain !important;
+        display: none !important;
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        filter: saturate(1.4) contrast(1.08) brightness(1.04) !important;
       }
       .flower .flower_mob_img,
       .flower img {
@@ -388,7 +384,7 @@ const headEnhancements = `
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        filter: saturate(1.4) contrast(1.08) brightness(1.04) !important;
+        filter: none !important;
       }
 
       .flower.loc-info {
@@ -610,8 +606,6 @@ const headEnhancements = `
       .interior-s_l_img .img-w {
         width: 100% !important;
         height: 100% !important;
-        clip-path: none !important;
-        opacity: 1 !important;
       }
       .interior-s_l_img img {
         width: 100% !important;
@@ -624,7 +618,6 @@ const headEnhancements = `
       .flower.interior img {
         mix-blend-mode: normal !important;
         opacity: 1 !important;
-        transform: none !important;
         visibility: visible !important;
         z-index: 5 !important;
         right: -8px !important;
@@ -632,6 +625,119 @@ const headEnhancements = `
         max-width: 38vw !important;
         max-height: 38vw !important;
         pointer-events: none !important;
+      }
+
+      /* Mobile Architecture Scroll & Sticky Sequence Parity (<= 991px) */
+      .arch-scroll-area {
+        position: relative !important;
+        height: 260vh !important;
+      }
+      .arch-scroll-area ._100vh {
+        display: block !important;
+        height: 100vh !important;
+        height: 100svh !important;
+      }
+      .arch-intro-s {
+        display: block !important;
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100svh !important;
+        margin-bottom: -100vh !important;
+        z-index: 3 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+      }
+      .arch-intro-s_bg_l {
+        background-color: var(--_colors---base-0--primary, #f3f3ec) !important;
+        position: absolute !important;
+        inset: -1% calc(50% - 1px) 0% 0% !important;
+        z-index: 2 !important;
+      }
+      .arch-intro-s_bg_r {
+        background-color: var(--_colors---base-0--primary, #f3f3ec) !important;
+        position: absolute !important;
+        inset: -1% 0% 0% 50% !important;
+        z-index: 2 !important;
+      }
+      .flower.arch-intro-l,
+      .flower.arch-intro-r {
+        display: block !important;
+        position: absolute !important;
+        z-index: 4 !important;
+        width: clamp(140px, 42vw, 190px) !important;
+        height: clamp(140px, 42vw, 190px) !important;
+        pointer-events: none !important;
+      }
+      .flower.arch-intro-l {
+        left: -4vw !important;
+        bottom: 22vh !important;
+        transform: rotate(-150deg);
+      }
+      .flower.arch-intro-r {
+        right: -4vw !important;
+        bottom: 22vh !important;
+        transform: rotate(65deg);
+      }
+      .flower.arch-intro-l .flower_mob_img,
+      .flower.arch-intro-r .flower_mob_img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+      }
+      .arch-w {
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100svh !important;
+        z-index: 1 !important;
+        overflow: hidden !important;
+      }
+      .arch-s {
+        height: 100vh !important;
+        height: 100svh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding: 80px 24px 48px !important;
+        box-sizing: border-box !important;
+        z-index: 2 !important;
+        position: relative !important;
+      }
+      .arch-s_t {
+        margin-top: 15px !important;
+      }
+      .arch-s_t h2 {
+        font-size: clamp(38px, 11vw, 56px) !important;
+        line-height: 1 !important;
+        letter-spacing: 0.04em !important;
+        text-align: center !important;
+        color: #ffffff !important;
+        text-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+      }
+      .arch-s_quote .h5 {
+        font-size: clamp(16px, 4.5vw, 20px) !important;
+        line-height: 1.35 !important;
+        color: #ffffff !important;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.5) !important;
+      }
+      .arch-s_author {
+        color: #ffffff !important;
+      }
+      .arch-w_bg {
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 1 !important;
+      }
+      .arch-w_bg .img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
       }
 
       .apart-item_card { margin-bottom: 2rem !important; }
@@ -1431,6 +1537,14 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
 
   // 10i. Amenities 9:16 Portrait Images for Phone View (Prevents horizontal crop on mobile)
   if (pageType === 'home') {
+    // Enable mobile architecture sticky sequence and interior parallax
+    res = res.replace('<div class="arch-intro-s b-desk">', '<div class="arch-intro-s">');
+    res = res.replace('<div class="_100vh b-desk"></div><div class="_100vh b-desk"></div>', '<div class="_100vh"></div><div class="_100vh"></div>');
+    res = res.replace('<div class="u-160 b-desk"></div></div><div data-part="ctn" class="arch-s_btn b-desk">', '<div class="u-160"></div></div><div data-part="ctn" class="arch-s_btn">');
+    res = res.replace('<div data-bg="light" class="arch_themes_light b-desk"></div>', '<div data-bg="light" class="arch_themes_light"></div>');
+    res = res.replace('<div class="interior-s_imgs"><div data-mob="off" data-parallax="ctn-down" class="interior-s_l">', '<div class="interior-s_imgs"><div data-parallax="ctn-down" class="interior-s_l">');
+    res = res.replace('<div data-mob="off" data-parallax="ctn-up" class="interior-s_r">', '<div data-parallax="ctn-up" class="interior-s_r">');
+
     const mobAmenityImages = {
       'gated-community': '/assets/images/era-residence-gated-community-mob.jpg',
       'swimming-pool-2': '/assets/images/era-residence-pool-mob.jpg',

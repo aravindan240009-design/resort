@@ -220,7 +220,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     .flower video,
     .flower img,
     .flower .flower_mob_img {
-      filter: saturate(1.4) contrast(1.15) brightness(1.02) !important;
+      filter: none !important;
       object-fit: contain !important;
       opacity: 1 !important;
     }
@@ -506,14 +506,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         pointer-events: none !important;
       }
       .flower video {
-        display: block !important;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain !important;
+        display: none !important;
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        filter: saturate(1.4) contrast(1.08) brightness(1.04) !important;
       }
       .flower .flower_mob_img,
       .flower img {
@@ -524,7 +520,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        filter: saturate(1.4) contrast(1.08) brightness(1.04) !important;
+        filter: none !important;
       }
 
       .flower.loc-info {
@@ -746,8 +742,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       .interior-s_l_img .img-w {
         width: 100% !important;
         height: 100% !important;
-        clip-path: none !important;
-        opacity: 1 !important;
       }
       .interior-s_l_img img {
         width: 100% !important;
@@ -760,7 +754,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
       .flower.interior img {
         mix-blend-mode: normal !important;
         opacity: 1 !important;
-        transform: none !important;
         visibility: visible !important;
         z-index: 5 !important;
         right: -8px !important;
@@ -768,6 +761,119 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         max-width: 38vw !important;
         max-height: 38vw !important;
         pointer-events: none !important;
+      }
+
+      /* Mobile Architecture Scroll & Sticky Sequence Parity (<= 991px) */
+      .arch-scroll-area {
+        position: relative !important;
+        height: 260vh !important;
+      }
+      .arch-scroll-area ._100vh {
+        display: block !important;
+        height: 100vh !important;
+        height: 100svh !important;
+      }
+      .arch-intro-s {
+        display: block !important;
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100svh !important;
+        margin-bottom: -100vh !important;
+        z-index: 3 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+      }
+      .arch-intro-s_bg_l {
+        background-color: var(--_colors---base-0--primary, #f3f3ec) !important;
+        position: absolute !important;
+        inset: -1% calc(50% - 1px) 0% 0% !important;
+        z-index: 2 !important;
+      }
+      .arch-intro-s_bg_r {
+        background-color: var(--_colors---base-0--primary, #f3f3ec) !important;
+        position: absolute !important;
+        inset: -1% 0% 0% 50% !important;
+        z-index: 2 !important;
+      }
+      .flower.arch-intro-l,
+      .flower.arch-intro-r {
+        display: block !important;
+        position: absolute !important;
+        z-index: 4 !important;
+        width: clamp(140px, 42vw, 190px) !important;
+        height: clamp(140px, 42vw, 190px) !important;
+        pointer-events: none !important;
+      }
+      .flower.arch-intro-l {
+        left: -4vw !important;
+        bottom: 22vh !important;
+        transform: rotate(-150deg);
+      }
+      .flower.arch-intro-r {
+        right: -4vw !important;
+        bottom: 22vh !important;
+        transform: rotate(65deg);
+      }
+      .flower.arch-intro-l .flower_mob_img,
+      .flower.arch-intro-r .flower_mob_img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+      }
+      .arch-w {
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100svh !important;
+        z-index: 1 !important;
+        overflow: hidden !important;
+      }
+      .arch-s {
+        height: 100vh !important;
+        height: 100svh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding: 80px 24px 48px !important;
+        box-sizing: border-box !important;
+        z-index: 2 !important;
+        position: relative !important;
+      }
+      .arch-s_t {
+        margin-top: 15px !important;
+      }
+      .arch-s_t h2 {
+        font-size: clamp(38px, 11vw, 56px) !important;
+        line-height: 1 !important;
+        letter-spacing: 0.04em !important;
+        text-align: center !important;
+        color: #ffffff !important;
+        text-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+      }
+      .arch-s_quote .h5 {
+        font-size: clamp(16px, 4.5vw, 20px) !important;
+        line-height: 1.35 !important;
+        color: #ffffff !important;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.5) !important;
+      }
+      .arch-s_author {
+        color: #ffffff !important;
+      }
+      .arch-w_bg {
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 1 !important;
+      }
+      .arch-w_bg .img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
       }
 
       .apart-item_card { margin-bottom: 2rem !important; }
@@ -2241,7 +2347,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(30 104 104)" />
 
   <circle cx="104" cy="104" r="103.5" stroke="var(--_colors---base-1000--line)" stroke-width="1" fill="none" />
-</svg></div><a aria-label="Book a call now" href="#" class="btn-circle_link w-inline-block"></a></div></div></div></div></div></div></div></div></section></div><div class="hero_themes"><div data-bg="color" class="hero_themes_color"></div><div data-bg="light" class="hero_themes_light"></div></div></div><section class="section arch clip"><div class="container"><div class="interior-w"><div class="interior-s"><div class="u-272"></div><div class="grid"><div class="interior-s_title"><h2 data-scroll-reveal="h" class="h1 a-center">The<br/>space<br/>to</h2><div class="interior-s_title_a"><h3 data-scroll-reveal="a" class="a1 a-center">Live in</h3></div></div></div><div class="interior-s_imgs"><div data-mob="off" data-parallax="ctn-down" class="interior-s_l"><div class="u-272"></div><div class="grid _5-columns"><div data-video-playpause="" class="interior-s_l_img-w"><div class="interior-s_l_img"><div data-scroll-reveal="slide" class="img-w"><img src="/assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2.webp" loading="eager" sizes="(max-width: 1920px) 100vw, 1920px" srcset="/assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2-p-500.png 500w, /assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2-p-800.png 800w, /assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2.webp 1920w" alt="Outdoor seating with modern chair, ottoman, table, and orange drink in a garden with pink flowers." class="img"/></div></div><div data-parallax="ctn-up" class="flower interior"><video autoplay="" muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/bougainvillea-flowers_06.png" class="video"><source src="/assets/videos/bougainvillea-flowers_06.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_06.mov" type="video/mp4"/></video><img src="/assets/images/bougainvillea-flowers_06.png" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div></div><div class="interior-s_l_desc"><div class="u-16"></div><h4 data-scroll-reveal="p" class="l1">Optional upgrades are available: <br/>• Private jacuzzi <br/>• EV charging point installation <br/>• Photovoltaic panels</h4><div class="u-160 b-mob"></div></div></div></div><div data-mob="off" data-parallax="ctn-up" class="interior-s_r"><div class="grid _5-columns"><div class="interior-s_r_img"><div data-scroll-reveal="slide" class="img-w"><img src="/assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace.webp" loading="eager" sizes="(max-width: 1920px) 100vw, 1920px" srcset="/assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace-p-500.png 500w, /assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace-p-800.png 800w, /assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace-p-1080.png 1080w, /assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace.webp 1920w" alt="Sunlit terrace with cushioned seating, wooden tables, plants, flowering vine canopy, and ocean in the distance." class="img"/></div></div><div class="interior-s_r_lead w-clearfix"><div class="u-16"></div><div class="red-line"></div><h4 data-scroll-reveal="p" class="h5">Every detail was selected to create homes that feel elegant, intuitive and effortless to live in</h4></div><div class="interior-s_r_desc"><div class="u-64"></div><p data-scroll-reveal="p" class="p1">Underfloor heating throughout the property. Climate automation systems. Smart lock access systems. Electrically adjustable aluminium shutters. Schneider Electric DLIFE switches and mechanisms .</p><div class="u-96"></div></div><div data-scroll-reveal="ctn" class="interior-s_r_btn"><div hover-btn-circle="" data-magnetic-btn="" hover-nav-item-trigger="" class="btn-circle"><div data-magnetic-inner="" class="btn-circle_label"><a hover-nav-item="" aria-label="View available apartments" href="/apartments/" class="nav-item w-inline-block"><div class="nav-item_label"><div class="nav-item_label_text"><div hover="text" class="l1">View available apartments</div></div><div class="nav-item_label_text is-2"><div hover="text" class="l1">View available apartments</div></div></div></a></div><div class="btn-circle_bg w-embed"><svg data-circle viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+</svg></div><a aria-label="Book a call now" href="#" class="btn-circle_link w-inline-block"></a></div></div></div></div></div></div></div></div></section></div><div class="hero_themes"><div data-bg="color" class="hero_themes_color"></div><div data-bg="light" class="hero_themes_light"></div></div></div><section class="section arch clip"><div class="container"><div class="interior-w"><div class="interior-s"><div class="u-272"></div><div class="grid"><div class="interior-s_title"><h2 data-scroll-reveal="h" class="h1 a-center">The<br/>space<br/>to</h2><div class="interior-s_title_a"><h3 data-scroll-reveal="a" class="a1 a-center">Live in</h3></div></div></div><div class="interior-s_imgs"><div data-parallax="ctn-down" class="interior-s_l"><div class="u-272"></div><div class="grid _5-columns"><div data-video-playpause="" class="interior-s_l_img-w"><div class="interior-s_l_img"><div data-scroll-reveal="slide" class="img-w"><img src="/assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2.webp" loading="eager" sizes="(max-width: 1920px) 100vw, 1920px" srcset="/assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2-p-500.png 500w, /assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2-p-800.png 800w, /assets/images/6a1571e51d50c8bcf5f4bb3d_era-residence-garden-2.webp 1920w" alt="Outdoor seating with modern chair, ottoman, table, and orange drink in a garden with pink flowers." class="img"/></div></div><div data-parallax="ctn-up" class="flower interior"><video autoplay="" muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/bougainvillea-flowers_06.png" class="video"><source src="/assets/videos/bougainvillea-flowers_06.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_06.mov" type="video/mp4"/></video><img src="/assets/images/bougainvillea-flowers_06.png" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div></div><div class="interior-s_l_desc"><div class="u-16"></div><h4 data-scroll-reveal="p" class="l1">Optional upgrades are available: <br/>• Private jacuzzi <br/>• EV charging point installation <br/>• Photovoltaic panels</h4><div class="u-160 b-mob"></div></div></div></div><div data-parallax="ctn-up" class="interior-s_r"><div class="grid _5-columns"><div class="interior-s_r_img"><div data-scroll-reveal="slide" class="img-w"><img src="/assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace.webp" loading="eager" sizes="(max-width: 1920px) 100vw, 1920px" srcset="/assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace-p-500.png 500w, /assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace-p-800.png 800w, /assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace-p-1080.png 1080w, /assets/images/6a15723f346e4b3a6c0af26a_era-residence-terrace.webp 1920w" alt="Sunlit terrace with cushioned seating, wooden tables, plants, flowering vine canopy, and ocean in the distance." class="img"/></div></div><div class="interior-s_r_lead w-clearfix"><div class="u-16"></div><div class="red-line"></div><h4 data-scroll-reveal="p" class="h5">Every detail was selected to create homes that feel elegant, intuitive and effortless to live in</h4></div><div class="interior-s_r_desc"><div class="u-64"></div><p data-scroll-reveal="p" class="p1">Underfloor heating throughout the property. Climate automation systems. Smart lock access systems. Electrically adjustable aluminium shutters. Schneider Electric DLIFE switches and mechanisms .</p><div class="u-96"></div></div><div data-scroll-reveal="ctn" class="interior-s_r_btn"><div hover-btn-circle="" data-magnetic-btn="" hover-nav-item-trigger="" class="btn-circle"><div data-magnetic-inner="" class="btn-circle_label"><a hover-nav-item="" aria-label="View available apartments" href="/apartments/" class="nav-item w-inline-block"><div class="nav-item_label"><div class="nav-item_label_text"><div hover="text" class="l1">View available apartments</div></div><div class="nav-item_label_text is-2"><div hover="text" class="l1">View available apartments</div></div></div></a></div><div class="btn-circle_bg w-embed"><svg data-circle viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(-150 104 104)" />
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(30 104 104)" />
 
@@ -2250,12 +2356,12 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 <path d="M10.4717 12.4717C10.2113 12.7321 9.78866 12.7321 9.52831 12.4717L5.52831 8.47173C5.26796 8.21138 5.26796 7.78872 5.52831 7.52837L9.52831 3.52837C9.78866 3.26802 10.2113 3.26802 10.4717 3.52837C10.732 3.78872 10.732 4.21138 10.4717 4.47173L6.94335 8.00005L10.4717 11.5284C10.732 11.7887 10.732 12.2114 10.4717 12.4717Z" fill="currentColor"/>
 </svg></div></div><div class="pag_prev_label"><div data-slider="current" class="l1">00</div></div></div><div class="pag_progress"><div data-slider="progress" class="pag_progress_fill"></div></div><div data-slider="next" class="pag_next"><div class="pag_prev_label"><div data-slider="next-num" class="l1">00</div></div><div class="ico-16"><div class="ico w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5.52833 3.52827C5.78868 3.26792 6.21134 3.26792 6.47169 3.52827L10.4717 7.52827C10.732 7.78862 10.732 8.21128 10.4717 8.47163L6.47169 12.4716C6.21134 12.732 5.78868 12.732 5.52833 12.4716C5.26798 12.2113 5.26798 11.7886 5.52833 11.5283L9.05665 7.99995L5.52833 4.47163C5.26798 4.21128 5.26798 3.78862 5.52833 3.52827Z" fill="currentColor"/>
-</svg></div></div></div></div></div></div></div><div class="u-96"></div></div><div class="interior_themes"><div data-bg="light" class="interior_themes_light-1"></div><div class="themes_row"><div data-bg="dark" class="interior_themes_dark-2"></div><div data-bg="light" class="interior_themes_light-2"></div></div><div data-bg="light" class="interior_themes_light-3"></div></div></div></div></section><section class="section clip"><div class="container"><div data-video-playpause="" class="arch-scroll-area"><div class="arch-intro-s b-desk"><div class="w_bg"><div class="arch-intro-s_bg_l"></div><div class="arch-intro-s_bg_r"><div class="w-embed"></div></div><div class="flower arch-intro-l"><video autoplay="" muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/bougainvillea-flowers_05.png" class="video"><source src="/assets/videos/bougainvillea-flowers_05.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_05.mov" type="video/mp4"/></video><img src="/assets/images/bougainvillea-flowers_05.png" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div><div class="flower arch-intro-r"><video autoplay="" muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/bougainvillea-flowers_07.png" class="video"><source src="/assets/videos/bougainvillea-flowers_07.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_07.mov" type="video/mp4"/></video><img src="/assets/images/bougainvillea-flowers_07.png" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div></div></div><div class="arch-w theme_on-color"><div class="arch-s"><div class="arch-s_t"><div class="u-48"></div><h2 data-text="h" data-fit-text="" class="h1 a-center">Architecture</h2><div class="u-32"></div><div class="grid"><div class="arch-s_desc"><p data-text="p" class="l1 a-center"></p></div></div></div><div class="arch-s_b"><div class="grid"><div class="arch-s_quote w-clearfix"><div class="red-line"></div><h3 data-part="p" class="h5">The architecture of [Your Brand] Residencess balances clean contemporary lines with Mediterranean warmth and texture</h3><div class="u-64"></div><div class="grid _4-columns"><div class="arch-s_author"><div data-part="p" class="l1">By Schiemann Weyers</div><div data-part="p" class="l1 reg">Architects OCWA Architects</div></div></div><div class="u-160 b-desk"></div></div><div data-part="ctn" class="arch-s_btn b-desk"><div data-modal-cta-btn="book-a-call" data-magnetic-btn="" hover-nav-item-trigger="" hover-btn-circle="" class="btn-circle"><div data-magnetic-inner="" class="btn-circle_label"><a hover-nav-item="" aria-label="Book a call now" href="#" class="nav-item w-inline-block"><div class="nav-item_label"><div class="nav-item_label_text"><div hover="text" class="l1">Book a call now</div></div><div class="nav-item_label_text is-2"><div hover="text" class="l1">Book a call now</div></div></div></a></div><div class="btn-circle_bg w-embed"><svg data-circle viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+</svg></div></div></div></div></div></div></div><div class="u-96"></div></div><div class="interior_themes"><div data-bg="light" class="interior_themes_light-1"></div><div class="themes_row"><div data-bg="dark" class="interior_themes_dark-2"></div><div data-bg="light" class="interior_themes_light-2"></div></div><div data-bg="light" class="interior_themes_light-3"></div></div></div></div></section><section class="section clip"><div class="container"><div data-video-playpause="" class="arch-scroll-area"><div class="arch-intro-s"><div class="w_bg"><div class="arch-intro-s_bg_l"></div><div class="arch-intro-s_bg_r"><div class="w-embed"></div></div><div class="flower arch-intro-l"><video autoplay="" muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/bougainvillea-flowers_05.png" class="video"><source src="/assets/videos/bougainvillea-flowers_05.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_05.mov" type="video/mp4"/></video><img src="/assets/images/bougainvillea-flowers_05.png" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div><div class="flower arch-intro-r"><video autoplay="" muted="" playsinline="playsinline" loop="" disablepictureinpicture="" webkit-playsinline="webkit-playsinline" poster="/assets/images/bougainvillea-flowers_07.png" class="video"><source src="/assets/videos/bougainvillea-flowers_07.webm" type="video/webm"/><source src="/assets/videos/bougainvillea-flowers_07.mov" type="video/mp4"/></video><img src="/assets/images/bougainvillea-flowers_07.png" alt="Bougainvillea flowers" class="flower_mob_img b-mob" loading="eager" /></div></div></div><div class="arch-w theme_on-color"><div class="arch-s"><div class="arch-s_t"><div class="u-48"></div><h2 data-text="h" data-fit-text="" class="h1 a-center">Architecture</h2><div class="u-32"></div><div class="grid"><div class="arch-s_desc"><p data-text="p" class="l1 a-center"></p></div></div></div><div class="arch-s_b"><div class="grid"><div class="arch-s_quote w-clearfix"><div class="red-line"></div><h3 data-part="p" class="h5">The architecture of [Your Brand] Residencess balances clean contemporary lines with Mediterranean warmth and texture</h3><div class="u-64"></div><div class="grid _4-columns"><div class="arch-s_author"><div data-part="p" class="l1">By Schiemann Weyers</div><div data-part="p" class="l1 reg">Architects OCWA Architects</div></div></div><div class="u-160"></div></div><div data-part="ctn" class="arch-s_btn"><div data-modal-cta-btn="book-a-call" data-magnetic-btn="" hover-nav-item-trigger="" hover-btn-circle="" class="btn-circle"><div data-magnetic-inner="" class="btn-circle_label"><a hover-nav-item="" aria-label="Book a call now" href="#" class="nav-item w-inline-block"><div class="nav-item_label"><div class="nav-item_label_text"><div hover="text" class="l1">Book a call now</div></div><div class="nav-item_label_text is-2"><div hover="text" class="l1">Book a call now</div></div></div></a></div><div class="btn-circle_bg w-embed"><svg data-circle viewBox="0 0 208 208" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(-150 104 104)" />
   <circle data-arc cx="104" cy="104" r="103.5" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(30 104 104)" />
 
   <circle cx="104" cy="104" r="103.5" stroke="var(--_colors---base-1000--line)" stroke-width="1" fill="none" />
-</svg></div><a aria-label="Book a call now" href="#" class="btn-circle_link w-inline-block"></a></div></div></div><div class="u-96"></div></div></div><div class="w_bg"><div data-desk="off" data-parallax="w" class="img-w"><img class="img" src="/assets/images/6a0f8994091fd12c24e79c8a_img_cam_02.webp" alt="Modern terrace apartments with green plants, flowering vines, and outdoor seating on a sunny day." sizes="(max-width: 1920px) 100vw, 1920px" data-parallax="img" loading="eager" srcset="/assets/images/6a0f8994091fd12c24e79c8a_img_cam_02-p-500.png 500w, /assets/images/6a0f8994091fd12c24e79c8a_img_cam_02-p-800.png 800w, /assets/images/6a0f8994091fd12c24e79c8a_img_cam_02-p-1080.png 1080w, /assets/images/6a0f8994091fd12c24e79c8a_img_cam_02.webp 1920w"/><div class="img-over-grad bot _100vh"></div><div class="img-over-grad bot _100vh"></div></div></div></div><div class="_100vh b-desk"></div><div class="_100vh b-desk"></div><div class="arch_themes"><div data-bg="light" class="arch_themes_light b-desk"></div><div data-bg="color" class="arch_themes_color"></div></div></div></div></section><section data-bg="light" class="section clip"><div class="container"><div data-video-playpause="" class="other-w"><div class="other-s"><div class="u-48"></div><div class="grid"><div class="s_title"><p data-scroll-reveal="p" class="l1 a-center">A place to live — to return year after year</p></div></div><div class="u-48"></div><div class="divider"><div data-scroll-reveal="line" class="line-v"></div></div><div class="u-64"></div><div class="grid"><div class="other-s_cms"><div class="other-cms w-dyn-list"><div role="list" class="other-cms_list w-dyn-items"><div role="listitem" class="other-cms_list_item w-dyn-item"><div data-accordion-card="" class="other-card"><div class="other-card_name"><div class="other-card_name_label"><h4 data-scroll-reveal="h" class="h3 a-center">Developer</h4><div data-scroll-reveal="ctn" data-ico-plus="" class="other-card_ico"><div class="ico-16"><div class="ico w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+</svg></div><a aria-label="Book a call now" href="#" class="btn-circle_link w-inline-block"></a></div></div></div><div class="u-96"></div></div></div><div class="w_bg"><div data-desk="off" data-parallax="w" class="img-w"><img class="img" src="/assets/images/6a0f8994091fd12c24e79c8a_img_cam_02.webp" alt="Modern terrace apartments with green plants, flowering vines, and outdoor seating on a sunny day." sizes="(max-width: 1920px) 100vw, 1920px" data-parallax="img" loading="eager" srcset="/assets/images/6a0f8994091fd12c24e79c8a_img_cam_02-p-500.png 500w, /assets/images/6a0f8994091fd12c24e79c8a_img_cam_02-p-800.png 800w, /assets/images/6a0f8994091fd12c24e79c8a_img_cam_02-p-1080.png 1080w, /assets/images/6a0f8994091fd12c24e79c8a_img_cam_02.webp 1920w"/><div class="img-over-grad bot _100vh"></div><div class="img-over-grad bot _100vh"></div></div></div></div><div class="_100vh"></div><div class="_100vh"></div><div class="arch_themes"><div data-bg="light" class="arch_themes_light"></div><div data-bg="color" class="arch_themes_color"></div></div></div></div></section><section data-bg="light" class="section clip"><div class="container"><div data-video-playpause="" class="other-w"><div class="other-s"><div class="u-48"></div><div class="grid"><div class="s_title"><p data-scroll-reveal="p" class="l1 a-center">A place to live — to return year after year</p></div></div><div class="u-48"></div><div class="divider"><div data-scroll-reveal="line" class="line-v"></div></div><div class="u-64"></div><div class="grid"><div class="other-s_cms"><div class="other-cms w-dyn-list"><div role="list" class="other-cms_list w-dyn-items"><div role="listitem" class="other-cms_list_item w-dyn-item"><div data-accordion-card="" class="other-card"><div class="other-card_name"><div class="other-card_name_label"><h4 data-scroll-reveal="h" class="h3 a-center">Developer</h4><div data-scroll-reveal="ctn" data-ico-plus="" class="other-card_ico"><div class="ico-16"><div class="ico w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8 2.66602C8.36819 2.66602 8.66699 2.96579 8.66699 3.33398V7.33301H12.667L12.8008 7.34668C13.1046 7.40886 13.3339 7.67787 13.334 8C13.334 8.36803 13.035 8.66673 12.667 8.66699H8.66699V12.667C8.66673 13.035 8.36803 13.334 8 13.334C7.63205 13.3339 7.33327 13.0349 7.33301 12.667V8.66699H3.33398C2.96579 8.66699 2.66602 8.36819 2.66602 8C2.6661 7.63188 2.96585 7.33301 3.33398 7.33301H7.33301V3.33398C7.33301 2.96585 7.63188 2.6661 8 2.66602Z" fill="currentColor"/>
 </svg></div></div></div></div></div><div data-accordion-card="content" class="other-card_info"><div class="u-32"></div><div class="grid _6-columns"><div class="other-card_info_desc"><p data-accordion-card="p" class="p1 a-center">Swiss Technology S.L.</p><div class="u-32"></div><div data-accordion-card="ctn" class="info_divider"><div class="line-h"></div></div><div class="u-48"></div></div></div></div></div></div><div role="listitem" class="other-cms_list_item w-dyn-item"><div data-accordion-card="" class="other-card"><div class="other-card_name"><div class="other-card_name_label"><h4 data-scroll-reveal="h" class="h3 a-center">Sales &amp; Marketing</h4><div data-scroll-reveal="ctn" data-ico-plus="" class="other-card_ico"><div class="ico-16"><div class="ico w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8 2.66602C8.36819 2.66602 8.66699 2.96579 8.66699 3.33398V7.33301H12.667L12.8008 7.34668C13.1046 7.40886 13.3339 7.67787 13.334 8C13.334 8.36803 13.035 8.66673 12.667 8.66699H8.66699V12.667C8.66673 13.035 8.36803 13.334 8 13.334C7.63205 13.3339 7.33327 13.0349 7.33301 12.667V8.66699H3.33398C2.96579 8.66699 2.66602 8.36819 2.66602 8C2.6661 7.63188 2.96585 7.33301 3.33398 7.33301H7.33301V3.33398C7.33301 2.96585 7.63188 2.6661 8 2.66602Z" fill="currentColor"/>
