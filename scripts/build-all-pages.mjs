@@ -84,7 +84,7 @@ const headEnhancements = `
     .flower video,
     .flower img,
     .flower .flower_mob_img {
-      filter: none !important;
+      filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
       object-fit: contain !important;
       opacity: 1 !important;
     }
@@ -384,7 +384,7 @@ const headEnhancements = `
         pointer-events: none !important;
         background: transparent !important;
         background-color: transparent !important;
-        filter: none !important;
+        filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
       }
 
       .flower.loc-info {
@@ -984,7 +984,7 @@ const headEnhancements = `
       }
 
       .section.theme_on-dark {
-        background-color: var(--_global-colors---brand-500--velvet-plum, #340c24) !important;
+        background-color: var(--_global-colors---brand-500--velvet-plum, #0b121e) !important;
         height: auto !important;
         min-height: auto !important;
         padding-top: clamp(48px, 8vw, 64px) !important;
@@ -1441,9 +1441,9 @@ function cleanAndTransformHtml(html, pageType = 'page', slug = '') {
   );
   res = res.replace(/https:\/\/unpkg\.com\/lenis@[^\/]+\/dist\/lenis\.css/gi, '/css/lenis.css');
 
-  // 6. Replace Slater loader script with local main.js
+  // 6. Replace Slater loader script with local main.js and importmap
   const slaterRegex = /<script>\s*document\.addEventListener\('DOMContentLoaded',\s*function\s*\(\)\s*\{[\s\S]*?loadtwc\(src\);\s*\}\);\s*<\/script>/gi;
-  res = res.replace(slaterRegex, '<script type="module" src="/src/scripts/main.js"></script>');
+  res = res.replace(slaterRegex, '<script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>\n<script type="module" src="/src/scripts/main.js"></script>');
 
   // 7. Replace vendor scripts
   res = res.replace(

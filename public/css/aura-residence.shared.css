@@ -361,3 +361,63 @@ body {
   .cta-s > .u-272 { height: 24px !important; }
   .cta-s_title > .u-160 { height: 28px !important; }
 }
+
+
+/* ==========================================================================
+   ROYAL MONACO GOLD BOUGAINVILLEA FLORAL & LUXURY SPACING
+   ========================================================================== */
+
+/* Transform pink/magenta bougainvillea into glorious royal Monaco gold flora */
+.flower,
+.flower video,
+.flower img,
+.flower .flower_mob_img,
+.loc-path-w_flower .flower {
+  filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+}
+
+@media screen and (min-width: 992px) {
+  .flower video {
+    display: block !important;
+    mix-blend-mode: multiply !important;
+    filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
+  }
+  .flower.interior video {
+    mix-blend-mode: normal !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .flower .flower_mob_img,
+  .flower img {
+    filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
+  }
+}
+
+/* Eliminate large empty dead zones & whitespace across all devices */
+.u-272 { height: clamp(40px, 6vw, 72px) !important; }
+.u-160 { height: clamp(28px, 4vw, 48px) !important; }
+.u-96  { height: clamp(20px, 2.5vw, 36px) !important; }
+.u-64  { height: clamp(16px, 2vw, 28px) !important; }
+.u-48  { height: clamp(12px, 1.5vw, 24px) !important; }
+.u-32  { height: clamp(10px, 1.2vw, 20px) !important; }
+
+/* Tighten arch & cta sections */
+.section.arch {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.cta-s {
+  padding-top: clamp(32px, 5vw, 56px) !important;
+  padding-bottom: clamp(48px, 6vw, 72px) !important;
+}
+
+/* Ensure #mobile-luxury-dock sits comfortably above content on phone */
+@media screen and (max-width: 991px) {
+  body {
+    padding-bottom: 80px !important;
+  }
+}

@@ -15,5 +15,8 @@
     "playwright": "^1.58.2",
     "vite": "^6.4.6"
   },
-  "description": "Ultra-luxury contemporary Mediterranean residential sales showcase template with Lenis smooth scroll and GSAP choreography."
+  "description": "Ultra-luxury contemporary Mediterranean residential sales showcase template with Lenis smooth scroll and GSAP choreography.",
+  "dependencies": {
+    "three": "^0.187.0"
+  }
 }
