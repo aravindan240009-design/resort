@@ -1274,6 +1274,65 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
         display: none !important;
       }
     }
+
+    /* Luxury Color & Spacing Harmonization */
+    :root {
+      --_global-colors---brand-500--powder-sky: #e2d5c5 !important;
+      --luxury-champagne: #e2d5c5;
+      --luxury-plum: #340c24;
+      --luxury-cream: #f3f3ec;
+      --luxury-midnight: #17233b;
+    }
+
+    .theme_on-brand {
+      --_colors---other--bg: #e2d5c5 !important;
+      background-color: #e2d5c5 !important;
+    }
+
+    .theme_on-brand .s_title .l1,
+    .theme_on-brand .info-s_lead .h4,
+    .theme_on-brand .info-s_desc .p1 {
+      color: #17233b !important;
+    }
+
+    .section {
+      transition: background-color 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .img-w img,
+    .amen-slide_img img,
+    .loc-intro-s_img img,
+    .interior-s_l_img img,
+    .interior-gallery-s_img img,
+    .other-s_img img,
+    .cta-w img {
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
+      will-change: transform;
+    }
+
+    @media screen and (min-width: 992px) {
+      .u-272 { height: clamp(48px, 5vw, 72px) !important; }
+      .u-160 { height: clamp(36px, 3.5vw, 48px) !important; }
+      .u-96 { height: clamp(24px, 2.5vw, 36px) !important; }
+      .u-64 { height: clamp(18px, 2vw, 28px) !important; }
+      .divider .line-v, .line-v { height: clamp(48px, 5vh, 64px) !important; }
+      .footer-s_t { height: clamp(36px, 4vw, 54px) !important; }
+      .cta-s { padding-top: clamp(40px, 5vw, 60px) !important; padding-bottom: clamp(60px, 6vw, 80px) !important; }
+      .cta-s > .u-272 { height: clamp(32px, 3vw, 48px) !important; }
+      .cta-s_title > .u-160 { height: clamp(36px, 3.5vw, 48px) !important; }
+      .interior-s > .u-272, .interior-s_l > .u-272 { height: clamp(40px, 4vw, 56px) !important; }
+      .apart-info-s > .u-160 { height: clamp(24px, 2.5vw, 36px) !important; }
+    }
+
+    @media screen and (max-width: 991px) {
+      .hero-s > .u-272.b-mob { height: clamp(40px, 8vh, 64px) !important; }
+      .slow-scroll-trigger { display: none !important; height: 0 !important; }
+      .divider, .divider .line-v, .line-v { height: clamp(32px, 5vh, 48px) !important; }
+      .footer-s_t { height: 0 !important; display: none !important; }
+      .cta-s { padding-top: 32px !important; padding-bottom: 48px !important; }
+      .cta-s > .u-272 { height: 24px !important; }
+      .cta-s_title > .u-160 { height: 28px !important; }
+    }
   </style>
   <script id="aura-dummy-redirect-handler">
     document.addEventListener('DOMContentLoaded', function() {
