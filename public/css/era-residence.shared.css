@@ -215,7 +215,7 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
     pointer-events: none !important;
     background: transparent !important;
     background-color: transparent !important;
-    filter: none !important;
+    filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
   }
 
   .flower.loc-info {
