@@ -30,10 +30,7 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
   opacity: 1 !important;
 }
 
-.flower video,
-.flower img,
-.flower .flower_mob_img {
-  filter: none !important;
+.flower video, .flower img, .flower .flower_mob_img { filter: sepia(100%) saturate(220%) hue-rotate(350deg) brightness(1.08) contrast(1.05) !important;
   object-fit: contain !important;
   opacity: 1 !important;
 }

@@ -410,7 +410,7 @@ function initMobileLuxuryDock() {
   style.textContent = `
     #mobile-luxury-dock {
       position: fixed;
-      bottom: 20px;
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
       left: 50%;
       transform: translateX(-50%);
       z-index: 99999;
